@@ -1,0 +1,10 @@
+# Static landing page. No build step.
+[build]
+  publish = "."
+  command = "echo 'static site, nothing to build'"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
