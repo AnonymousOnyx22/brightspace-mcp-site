@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="msvalidate.01" content="C993C6F3C372BD700CDE90CDB53BAEFC" />
-<title>Brightspace D2L MCP Server: Connect Brightspace to Claude, ChatGPT and Cursor</title>
+<title>Brightspace MCP Server for D2L: Connect Brightspace to Claude and ChatGPT</title>
 <meta name="description" content="Brightspace MCP connects D2L Brightspace to Claude, ChatGPT, Cursor and Copilot. Ask what's due, what you already submitted, your grades and exam dates, and get deadline and grade alerts. 7-day free trial, then $4 CAD a month.">
 <meta name="keywords" content="brightspace mcp, d2l mcp, brightspace ai, d2l brightspace chatgpt, brightspace claude, d2l ai assistant, brightspace mcp server, d2l mcp server">
 <link rel="canonical" href="https://brightspacemcp.com/">
@@ -14,7 +14,7 @@
 <meta property="og:description" content="Ask your AI what's actually left to do. It checks what you already handed in, and alerts you before deadlines. 7-day free trial.">
 <meta property="og:url" content="https://brightspacemcp.com/">
 <meta property="og:image" content="https://brightspacemcp.com/og.png">
-<meta property="og:site_name" content="Brightspace D2L MCP Server">
+<meta property="og:site_name" content="Brightspace MCP">
 <meta property="og:locale" content="en_CA">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -29,9 +29,37 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1020'/%3E%3Cpath d='M18 33l9 9 19-21' stroke='%23ff6a3d' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <script type="application/ld+json">
 {
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://brightspacemcp.com/#website",
+   "name": "Brightspace MCP",
+   "alternateName": [
+    "Brightspace D2L MCP",
+    "D2L MCP",
+    "Brightspace MCP Server"
+   ],
+   "url": "https://brightspacemcp.com/",
+   "publisher": {
+    "@id": "https://brightspacemcp.com/#org"
+   }
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://brightspacemcp.com/#org",
+   "name": "Brightspace MCP",
+   "url": "https://brightspacemcp.com/",
+   "logo": "https://brightspacemcp.com/logo.png"
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Brightspace D2L MCP Server",
+  "name": "Brightspace MCP",
   "alternateName": ["Brightspace MCP Pro", "D2L MCP", "Brightspace MCP"],
   "applicationCategory": "EducationalApplication",
   "operatingSystem": "Windows, macOS, Linux",
@@ -59,6 +87,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {"@type": "Question", "name": "What is Brightspace MCP?", "acceptedAnswer": {"@type": "Answer", "text": "Brightspace MCP is an MCP (Model Context Protocol) server for D2L Brightspace. It lets AI apps like Claude, ChatGPT, Cursor and Copilot read your courses, due dates, submission status, grades and course files, so you can ask what to work on next."}},
     {"@type": "Question", "name": "Does it work at my school?", "acceptedAnswer": {"@type": "Answer", "text": "If your school uses D2L Brightspace, yes. Setup opens a normal browser window so any sign-in works, including Microsoft, Duo, Okta and Shibboleth."}},
     {"@type": "Question", "name": "Is my password saved?", "acceptedAnswer": {"@type": "Answer", "text": "No. You type your password into your school's own sign-in page in a real browser. The tool only keeps the session, on your own computer."}},
     {"@type": "Question", "name": "Can it submit work or change anything in Brightspace?", "acceptedAnswer": {"@type": "Answer", "text": "No. Every tool is read-only and only ever sends read requests to Brightspace."}},
@@ -86,7 +115,7 @@
     <div class="hero hero-split">
       <div class="hero-copy">
         <p class="eyebrow enter" style="--i:0">7-day free trial · Claude, ChatGPT, Cursor, Copilot</p>
-        <h1 class="enter" style="--i:1">Ask your AI what's <span class="hl">actually</span> left to do.</h1>
+        <h1 class="enter" style="--i:1">Brightspace MCP: ask your AI what's <span class="hl">actually</span> left to do.</h1>
         <p class="lede enter" style="--i:2">Connect D2L Brightspace to your AI app. It checks what you already handed in, so you only see the work that's really left, and it alerts you before deadlines and when grades are posted.</p>
         <div class="enter cta-row" style="--i:3">
           <form method="POST" action="/api/checkout" class="inline"><button class="btn primary" type="submit">Start 7-day free trial</button></form>
@@ -116,6 +145,11 @@
         </div>
       </div>
     </div>
+
+    <section id="what">
+      <h2 class="reveal">What is Brightspace MCP?</h2>
+      <p class="sub reveal">Brightspace MCP is a <b>D2L Brightspace MCP server</b>. MCP (Model Context Protocol) is the standard way AI apps connect to other software. This server connects your D2L Brightspace account to Claude, ChatGPT, Cursor and Copilot, so your AI can see your courses, due dates, what you've handed in, grades and course files. It works at any school that uses D2L Brightspace. <a href="/brightspace-mcp/">Learn how it works</a>.</p>
+    </section>
 
     <section id="how">
       <p class="eyebrow reveal">How it works</p>
@@ -237,6 +271,7 @@
     <section id="faq">
       <h2 class="reveal">FAQ</h2>
       <div class="faq">
+      <details class="reveal" style="--i:0"><summary>What is Brightspace MCP?</summary><p>A D2L Brightspace MCP server: it connects Brightspace to AI apps like Claude and ChatGPT using MCP (Model Context Protocol), so they can read your due dates, submissions, grades and course files. <a href="/brightspace-mcp/">More about Brightspace MCP</a>.</p></details>
       <details class="reveal" style="--i:0" open><summary>Does it work at my school?</summary><p>If your school uses D2L Brightspace, yes. Setup opens a normal browser window so any sign-in works, including Microsoft, Duo, Okta and Shibboleth.</p></details>
       <details class="reveal" style="--i:1"><summary>Does it work on my phone?</summary><p>You can sign up on your phone, but Brightspace MCP runs in the Claude app on your Mac or Windows laptop. After checkout on your phone, tap <b>Send to my laptop</b> and finish there in about a minute.</p></details>
       <details class="reveal" style="--i:1"><summary>Is my password saved?</summary><p>No. You type your password into your school's own sign-in page in a real browser. The tool only keeps the session, on your own computer.</p></details>
@@ -256,7 +291,7 @@
   </main>
 
   <footer>
-    <p>Brightspace D2L MCP Server, built by AnonymousOnyx22, a student developer. Not affiliated with D2L.
+    <p><a href="/brightspace-mcp/">What is Brightspace MCP?</a> · Brightspace D2L MCP Server, built by AnonymousOnyx22, a student developer. Not affiliated with D2L.
     · <a href="/pro/">Pricing</a> · <a href="/compare/">Compare</a> · <a href="/claude/">Brightspace + Claude</a> · <a href="/chatgpt/">Brightspace + ChatGPT</a>
     · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></p>
   </footer>
