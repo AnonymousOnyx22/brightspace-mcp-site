@@ -32,26 +32,16 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Brightspace D2L MCP Server",
-  "alternateName": ["brightspace-d2l-mcp", "D2L MCP", "Brightspace MCP"],
+  "alternateName": ["Brightspace MCP Pro", "D2L MCP", "Brightspace MCP"],
   "applicationCategory": "EducationalApplication",
   "operatingSystem": "Windows, macOS, Linux",
   "description": "MCP server that connects D2L Brightspace to Claude, ChatGPT, Cursor, Copilot and other AI apps. Due dates with real submission status, grades, target-grade calculator, exam and calendar events, and course content.",
   "url": "https://brightspacemcp.com/",
-  "downloadUrl": "https://www.npmjs.com/package/brightspace-d2l-mcp",
-  "codeRepository": "https://github.com/AnonymousOnyx22/brightspace-d2l-mcp",
   "offers": { "@type": "Offer", "price": "4.00", "priceCurrency": "CAD", "description": "Monthly subscription with a 7-day free trial" },
-  "softwareVersion": "1.5.0",
+  "softwareVersion": "1.0.0",
   "isAccessibleForFree": false,
   "image": "https://brightspacemcp.com/og.png",
   "screenshot": "https://brightspacemcp.com/demo.gif",
-  "sameAs": [
-    "https://github.com/AnonymousOnyx22/brightspace-d2l-mcp",
-    "https://www.npmjs.com/package/brightspace-d2l-mcp",
-    "https://cursor.directory/plugins/brightspace-d2l-mcp",
-    "https://glama.ai/mcp/servers/AnonymousOnyx22/brightspace-d2l-mcp",
-    "https://mcpservers.org/servers/anonymousonyx22/brightspace-d2l-mcp",
-    "https://dev.to/anonymousonyx22/i-built-an-mcp-server-so-claude-stops-telling-me-to-do-homework-i-already-submitted-47e7"
-  ],
   "featureList": [
     "Due dates with real submission status",
     "Grades and target-grade calculator",
@@ -73,7 +63,7 @@
     {"@type": "Question", "name": "Is my password saved?", "acceptedAnswer": {"@type": "Answer", "text": "No. You type your password into your school's own sign-in page in a real browser. The tool only keeps the session, on your own computer."}},
     {"@type": "Question", "name": "Can it submit work or change anything in Brightspace?", "acceptedAnswer": {"@type": "Answer", "text": "No. Every tool is read-only and only ever sends read requests to Brightspace."}},
     {"@type": "Question", "name": "Which AI apps does it work with?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Desktop, Claude Code, ChatGPT, Cursor, VS Code with GitHub Copilot, Windsurf, Codex, Gemini CLI, Cline, Zed, LM Studio and any other app that supports MCP."}},
-    {"@type": "Question", "name": "How do I use Brightspace with Claude?", "acceptedAnswer": {"@type": "Answer", "text": "Run npx brightspace-d2l-mcp setup and it adds Brightspace to Claude Desktop and Claude Code for you."}},
+    {"@type": "Question", "name": "How do I use Brightspace with Claude?", "acceptedAnswer": {"@type": "Answer", "text": "Run npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup and it adds Brightspace to Claude Desktop and Claude Code for you."}},
     {"@type": "Question", "name": "Does it work with ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, through ChatGPT developer mode and the server's HTTP mode."}},
     {"@type": "Question", "name": "Does it cost anything?", "acceptedAnswer": {"@type": "Answer", "text": "There is a 7-day free trial, then it is $4 CAD a month. Cancel anytime."}}
   ]
@@ -156,7 +146,7 @@
           </ol>
           <div class="cta-row"><a class="btn primary" href="/brightspace-setup.cmd" download>Download setup for Windows</a></div>
           <p class="note">Prefer typing it? Open <b>PowerShell</b> and run:</p>
-          <div class="cmd"><span class="p">&gt;</span><span>npx brightspace-d2l-mcp setup</span><button class="copy" type="button" data-copy="npx brightspace-d2l-mcp setup"><span>Copy</span></button></div>
+          <div class="cmd"><span class="p">&gt;</span><span>npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup</span><button class="copy" type="button" data-copy="npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup"><span>Copy</span></button></div>
         </div>
         <div class="panel" data-panel="mac" hidden>
           <ol class="mini">
@@ -173,7 +163,7 @@
           </ol>
           <div class="cmd big"><span class="p">$</span><span>curl -fsSL https://brightspacemcp.com/install.sh | bash</span><button class="copy" type="button" data-copy="curl -fsSL https://brightspacemcp.com/install.sh | bash"><span>Copy</span></button></div>
         </div>
-        <p class="note">Stuck? Run <code>npx brightspace-d2l-mcp doctor</code> and it tells you what to fix. Guides for <a href="/claude/">Claude</a> and <a href="/chatgpt/">ChatGPT</a>, or the <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp/blob/main/docs/setup.md">full setup guide</a>.</p>
+        <p class="note">Stuck? Run <code>npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz doctor</code> and it tells you what to fix. Guides for <a href="/claude/">Claude</a> and <a href="/chatgpt/">ChatGPT</a>, or the <a href="/contact/">contact form</a>.</p>
       </div>
     </section>
 
@@ -249,7 +239,7 @@
       <details class="reveal" style="--i:4"><summary>Are the setup files safe?</summary><p>Yes. The Windows file is a short text file you can open in Notepad, and the Mac installer is readable at <a href="/install.sh">brightspacemcp.com/install.sh</a>. Both only install Node.js into your user folder if it's missing, then run setup.</p></details>
       <details class="reveal" style="--i:5"><summary>How do I use it with Claude or ChatGPT?</summary><p>Setup adds Brightspace to Claude Desktop and Claude Code for you. ChatGPT works through developer mode. See the <a href="/claude/">Claude guide</a> and the <a href="/chatgpt/">ChatGPT guide</a>.</p></details>
       <details class="reveal" style="--i:6"><summary>Does it cost anything?</summary><p>The first 7 days are free. After that it's $4 CAD a month, and you can cancel anytime from the <a href="/pro/#manage">billing page</a>.</p></details>
-      <details class="reveal" style="--i:7"><summary>Something isn't working</summary><p>Run <code>npx brightspace-d2l-mcp doctor</code>. It checks everything and tells you how to fix it. Or <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp/issues">open an issue</a>.</p></details>
+      <details class="reveal" style="--i:7"><summary>Something isn't working</summary><p>Run <code>npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz doctor</code>. It checks everything and tells you how to fix it. Or <a href="/contact/">contact us</a>.</p></details>
       </div>
     </section>
 
@@ -262,7 +252,6 @@
   <footer>
     <p>Brightspace D2L MCP Server, built by AnonymousOnyx22, a student developer. Not affiliated with D2L.
     · <a href="/pro/">Pricing</a> · <a href="/compare/">Compare</a> · <a href="/claude/">Brightspace + Claude</a> · <a href="/chatgpt/">Brightspace + ChatGPT</a>
-    · <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a> · <a href="https://www.npmjs.com/package/brightspace-d2l-mcp">npm</a>
     · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></p>
   </footer>
 </div>

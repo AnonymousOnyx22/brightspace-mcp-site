@@ -55,3 +55,9 @@
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
     Cache-Control = "public, max-age=300"
+
+[[headers]]
+  for = "/pro/*.tgz"
+  [headers.values]
+    Content-Type = "application/gzip"
+    Cache-Control = "public, max-age=0, must-revalidate"

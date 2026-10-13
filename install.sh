@@ -53,7 +53,7 @@ if ! node_ok; then
   export PATH="$NODE_DIR/bin:$PATH"
 fi
 
-ARGS=(-y brightspace-d2l-mcp@latest setup)
+ARGS=(-y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup)
 [ -n "$KEY" ] && ARGS+=(--key "$KEY")
 # The script itself arrives on stdin, so give setup the keyboard for its questions.
 if [ -r /dev/tty ] && { : < /dev/tty; } 2>/dev/null; then

@@ -45,28 +45,27 @@
 <div class="wrap page">
   <header class="top">
     <a class="brand" href="/"><span class="brand-mark"><svg width="18" height="18" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 33l11 11 25-27" stroke="#ff6a3d" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Brightspace MCP</a>
-    <nav><a href="/claude/">Claude</a><a href="/chatgpt/">ChatGPT</a><a href="/compare/">Compare</a><a href="/pro/">Pricing</a><a class="gh" href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a></nav>
+    <nav><a href="/claude/">Claude</a><a href="/chatgpt/">ChatGPT</a><a href="/compare/">Compare</a><a href="/pro/">Pricing</a><a class="gh" href="/pro/">Start free trial</a></nav>
   </header>
   <p class="crumbs"><a href="/">Home</a> / Compare</p>
   <main>
     <div class="hero">
       <h1>Brightspace MCP servers compared</h1>
 
-      <p class="lede">A few open-source projects connect D2L Brightspace to AI assistants. Here's how brightspace-d2l-mcp lines up against the most popular other one, so you can pick what fits.</p>
+      <p class="lede">A few open-source projects connect D2L Brightspace to AI assistants. Here's how Brightspace MCP lines up against the most popular other one, so you can pick what fits.</p>
       <section><div class="tablewrap"><table class="cmp">
-      <thead><tr><th>Feature</th><th>brightspace-d2l-mcp</th><th>brightspace-mcp-server (RohanMuppa)</th></tr></thead>
+      <thead><tr><th>Feature</th><th>Brightspace MCP</th><th>brightspace-mcp-server (RohanMuppa)</th></tr></thead>
       <tbody><tr><td>Price</td><td>7-day free trial, then $4 CAD/month</td><td>Free, open source</td></tr><tr><td>MCP tools</td><td>17</td><td>12</td></tr><tr><td>Real submission status on due dates</td><td><span class="yes">Yes</span></td><td>Yes, in assignments</td></tr><tr><td>Ranked to-do list across all courses</td><td><span class="yes">Yes</span> <code>get_todo</code></td><td>No dedicated tool</td></tr><tr><td>Target grade calculator</td><td><span class="yes">Yes</span> <code>get_grade_outlook</code></td><td>Not in tool list</td></tr><tr><td>Exam and course calendar events</td><td><span class="yes">Yes</span></td><td>Not in tool list</td></tr><tr><td>Calendar export (.ics)</td><td><span class="yes">Yes</span></td><td>Not in tool list</td></tr><tr><td>Catch-up of what's new</td><td><span class="yes">Yes</span> <code>get_whats_new</code></td><td>Not in tool list</td></tr><tr><td>Reads assignment files and rubrics</td><td><span class="yes">Yes</span></td><td>Not in tool list</td></tr><tr><td>One-click prompts</td><td>9</td><td>Not mentioned</td></tr><tr><td>Sign-in</td><td>Real browser window, any SSO</td><td>Setup wizard with MFA</td></tr><tr><td>Read-only</td><td><span class="yes">Yes</span>, enforced by a test</td><td>Yes</td></tr><tr><td>AI apps connected automatically</td><td>13</td><td>2 (Claude Desktop, Cursor)</td></tr><tr><td>HTTP mode for ChatGPT and agents</td><td><span class="yes">Yes</span></td><td>Not mentioned</td></tr><tr><td>Deadline, grade and daily alerts</td><td><span class="yes">Yes</span></td><td>No</td></tr><tr><td>Node version</td><td>20+</td><td>18+</td></tr></tbody></table></div>
-      <p class="note">Based on each project's public README and tool list as of October 2026. "Not in tool list" means we couldn't find it in their published tools, not that it can never be done. Spot a mistake? <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp/issues">Open an issue</a> and it'll be fixed.</p></section>
-      <section><h2>Why the to-do list matters</h2><p class="sub">Due dates alone don't tell you what's left. brightspace-d2l-mcp checks your actual submission for every assignment, so your AI never tells you to do work you already handed in.</p><div class="figure"><img src="/demo.gif" alt="Asking an AI what to work on and getting a Brightspace to-do list that skips submitted work (sample data)" width="800" height="420" loading="lazy"></div></section>
+      <p class="note">Based on each project's public README and tool list as of October 2026. "Not in tool list" means we couldn't find it in their published tools, not that it can never be done. Spot a mistake? <a href="/contact/">Tell us</a> and it'll be fixed.</p></section>
+      <section><h2>Why the to-do list matters</h2><p class="sub">Due dates alone don't tell you what's left. Brightspace MCP checks your actual submission for every assignment, so your AI never tells you to do work you already handed in.</p><div class="figure"><img src="/demo.gif" alt="Asking an AI what to work on and getting a Brightspace to-do list that skips submitted work (sample data)" width="800" height="420" loading="lazy"></div></section>
       <section><h2>Other options</h2><p class="sub">Hosted integration platforms such as Pipedream also offer D2L Brightspace connectors, and the R package brightspaceR includes an MCP setup aimed at data analysis. Those suit different needs than a student's personal assistant.</p></section>
-      <section><h2>Try it</h2><div class="install"><div class="cmd"><span class="p">$</span><span>npx brightspace-d2l-mcp setup</span></div><a class="btn primary" href="/">See all features</a></div></section>
+      <section><h2>Try it</h2><div class="install"><div class="cmd"><span class="p">$</span><span>npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup</span></div><a class="btn primary" href="/">See all features</a></div></section>
 
     </div>
   </main>
   <footer>
     <p>Brightspace D2L MCP Server, built by AnonymousOnyx22, a student developer. Not affiliated with D2L.
     · <a href="/">Home</a> · <a href="/claude/">Brightspace + Claude</a> · <a href="/chatgpt/">Brightspace + ChatGPT</a> · <a href="/compare/">Compare</a>
-    · <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a> · <a href="https://www.npmjs.com/package/brightspace-d2l-mcp">npm</a>
     · <a href="/pro/">Pricing</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></p>
   </footer>
 </div>
