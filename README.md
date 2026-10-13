@@ -1,6 +1,6 @@
 # Brightspace D2L MCP Server website
 
-Landing page for https://brightspace-mcp.netlify.app
+Landing page for https://brightspacemcp.com
 
 The server itself lives at https://github.com/AnonymousOnyx22/brightspace-d2l-mcp
 

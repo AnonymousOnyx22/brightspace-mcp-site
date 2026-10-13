@@ -76,6 +76,6 @@ The password is never seen or stored because the user types it into the school's
 
 ## Guides
 
-- [Connect Brightspace to Claude](https://brightspace-mcp.netlify.app/claude/)
-- [Use Brightspace with ChatGPT](https://brightspace-mcp.netlify.app/chatgpt/)
-- [Brightspace MCP servers compared](https://brightspace-mcp.netlify.app/compare/)
+- [Connect Brightspace to Claude](https://brightspacemcp.com/claude/)
+- [Use Brightspace with ChatGPT](https://brightspacemcp.com/chatgpt/)
+- [Brightspace MCP servers compared](https://brightspacemcp.com/compare/)

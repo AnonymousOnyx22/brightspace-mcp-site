@@ -25,4 +25,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://brightspace-mcp.netlify.app/sitemap.xml
+Sitemap: https://brightspacemcp.com/sitemap.xml
