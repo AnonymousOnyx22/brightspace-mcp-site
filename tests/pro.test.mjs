@@ -125,3 +125,26 @@ test("Add to Claude downloads the extension with key and school filled in", asyn
   assert.equal(JSON.parse(readEntry(Buffer.from(await byKey.arrayBuffer()), "manifest.json")).user_config.school.default, "x.brightspace.com");
   assert.equal((await handler(new Request("https://brightspacemcp.com/pro/claude.mcpb?k=bmp_9Zz_AAAAAAAAAAAAAAAAAAAAAAAA"))).status, 404);
 });
+
+test("the key is emailed once, through Resend, and marked on the subscription", async () => {
+  process.env.RESEND_API_KEY = "re_test";
+  const sent = [];
+  const realFetch = globalThis.fetch;
+  globalThis.fetch = async (url, init = {}) => {
+    if (String(url) === "https://api.resend.com/emails") { sent.push(JSON.parse(init.body)); return new Response("{}", { status: 200 }); }
+    return realFetch(url, init);
+  };
+  stripe.responses["GET checkout/sessions/cs_done"] = [200, { status: "complete", subscription: "sub_9Zz", customer_details: { email: "student@example.com" } }];
+  stripe.responses["GET subscriptions/sub_9Zz"] = [200, { id: "sub_9Zz", metadata: {} }];
+  stripe.responses["POST subscriptions/sub_9Zz"] = [200, { id: "sub_9Zz" }];
+  await handler(new Request("https://brightspacemcp.com/pro/activate?session_id=cs_done"));
+  assert.equal(sent.length, 1);
+  assert.deepEqual(sent[0].to, ["student@example.com"]);
+  assert.ok(sent[0].text.includes(licenseKeyFor("sub_9Zz")));
+  assert.ok(stripe.calls.some((c) => c.path === "subscriptions/sub_9Zz" && c.method === "POST" && c.body.includes("key_emailed")));
+
+  stripe.responses["GET subscriptions/sub_9Zz"] = [200, { id: "sub_9Zz", metadata: { key_emailed: "2026-10-13" } }];
+  await handler(new Request("https://brightspacemcp.com/pro/activate?session_id=cs_done"));
+  assert.equal(sent.length, 1, "not sent twice");
+  delete process.env.RESEND_API_KEY;
+});

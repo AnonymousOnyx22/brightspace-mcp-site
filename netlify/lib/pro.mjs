@@ -137,6 +137,22 @@ export async function personalizedExtension(key, school) {
   return replaceEntry(zip, "manifest.json", Buffer.from(JSON.stringify(manifest, null, 2) + "\n"));
 }
 
+/** Sends the key email the first time the post-checkout page loads for a subscription. */
+async function emailKeyOnce(session, subscriptionId, key, school) {
+  const to = session.customer_details?.email;
+  if (!to) return;
+  try {
+    const sub = typeof session.subscription === "object" ? session.subscription : await stripeCall("GET", `subscriptions/${subscriptionId}`);
+    if (sub?.metadata?.key_emailed) return;
+    const { sendKeyEmail } = await import("./email.mjs");
+    if (await sendKeyEmail({ to, key, school })) {
+      await stripeCall("POST", `subscriptions/${subscriptionId}`, { metadata: { key_emailed: new Date().toISOString() } });
+    }
+  } catch (error) {
+    console.log(`Key email skipped: ${error.message}`);
+  }
+}
+
 export async function claudeExtension(req) {
   const q = new URL(req.url).searchParams;
   let key = null;
@@ -221,6 +237,7 @@ export async function activatePage(req) {
   const subscriptionId = typeof session.subscription === "string" ? session.subscription : session.subscription.id;
   const key = licenseKeyFor(subscriptionId);
   const school = schoolFromSession(session);
+  await emailKeyOnce(session, subscriptionId, key, school);
   const command = `curl -fsSL https://brightspacemcp.com/install.sh | bash -s -- ${key}`;
   return page("You're in", `
     <div class="hero">
@@ -246,7 +263,7 @@ export async function activatePage(req) {
         <div class="cta-row"><a class="btn primary" href="/pro/claude.mcpb?session_id=${esc(sessionId)}" download>Add to Claude</a></div>
         <p class="note" style="margin-top:16px">Your key:</p>
         <div class="cmd"><span>${esc(key)}</span><button class="copy" type="button" data-copy="${esc(key)}"><span>Copy</span></button></div>
-        <p class="note">Save it somewhere safe. You need it on another computer or to manage billing.</p>
+        <p class="note">We also emailed it to you. Save it somewhere safe: you need it on another computer or to manage billing.</p>
       </div>
       <details style="margin-top:24px">
         <summary>Using Cursor, VS Code, Windsurf or another AI app?</summary>
