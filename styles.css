@@ -196,3 +196,6 @@ details[open] summary::after { transform: rotate(45deg); }
 .top-bar .top { padding: 14px 16px; }
 form.inline { display: contents; }
 button.btn { font: inherit; font-weight: 600; cursor: pointer; }
+.cmd > span:not(.p) { min-width: 0; overflow-wrap: anywhere; }
+p code, li code, .note code { overflow-wrap: anywhere; }
+body { overflow-x: clip; }

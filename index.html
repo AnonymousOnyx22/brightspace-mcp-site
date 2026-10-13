@@ -123,7 +123,7 @@
       <p class="sub reveal">No API keys and nothing to configure by hand.</p>
       <ol class="flow">
         <li class="reveal" style="--i:0"><span class="num">1</span><h3>Start your free trial</h3><p>7 days free. You get a key right after checkout.</p></li>
-        <li class="reveal" style="--i:1"><span class="num">2</span><h3>Run setup and sign in</h3><p>One click on Windows, one command on Mac and Linux. Sign in with Microsoft, Duo, Okta or Shibboleth.</p></li>
+        <li class="reveal" style="--i:1"><span class="num">2</span><h3>Add it to Claude</h3><p>One click in the Claude app on Mac or Windows. Paste your key, and sign in to Brightspace once.</p></li>
         <li class="reveal" style="--i:2"><span class="num">3</span><h3>Ask your AI</h3><p>Setup connects every AI app it finds. Ask "What's due this week?"</p></li>
       </ol>
     </section>
@@ -131,7 +131,12 @@
     <section id="setup" class="setup-section">
       <p class="eyebrow reveal">Get started</p>
       <h2 class="reveal">Set it up</h2>
-      <p class="sub reveal">First <a href="#pricing">start your free trial</a>. The page after checkout gives you setup with your key already in it. Already have a key? Pick your computer.</p>
+      <div class="plan plan-pro reveal" style="max-width:760px;margin-bottom:18px">
+        <h3>Claude app (easiest)</h3>
+        <p class="note" style="margin:6px 0 14px">One click on Mac or Windows. No Terminal. After checkout you get an <b>Add to Claude</b> button: open the file, paste your key and school address, click Install.</p>
+        <div class="cta-row"><form method="POST" action="/api/checkout" class="inline"><button class="btn primary" type="submit">Start 7-day free trial</button></form><a class="btn" href="/pro/brightspace-mcp-pro.mcpb" download>Already have a key? Add to Claude</a></div>
+      </div>
+      <p class="sub reveal">Using Cursor, VS Code, Windsurf or another AI app? Pick your computer:</p>
       <div class="setup reveal" data-setup>
         <div class="tabs" role="tablist" aria-label="Your computer">
           <button role="tab" type="button" data-os="win" aria-selected="true">Windows</button>
@@ -237,7 +242,7 @@
       <details class="reveal" style="--i:2"><summary>Can it submit work or change anything?</summary><p>No. Every tool is read-only and only ever reads from Brightspace. A test in the code fails if that ever changes.</p></details>
       <details class="reveal" style="--i:3"><summary>Where does my data go?</summary><p>Nowhere but your own computer and AI app. It talks only to your school's Brightspace, with no server in between and no analytics. Only your subscription key is checked with us. See the <a href="/privacy/">privacy policy</a>.</p></details>
       <details class="reveal" style="--i:4"><summary>Are the setup files safe?</summary><p>Yes. The Windows file is a short text file you can open in Notepad, and the Mac installer is readable at <a href="/install.sh">brightspacemcp.com/install.sh</a>. Both only install Node.js into your user folder if it's missing, then run setup.</p></details>
-      <details class="reveal" style="--i:5"><summary>How do I use it with Claude or ChatGPT?</summary><p>Setup adds Brightspace to Claude Desktop and Claude Code for you. ChatGPT works through developer mode. See the <a href="/claude/">Claude guide</a> and the <a href="/chatgpt/">ChatGPT guide</a>.</p></details>
+      <details class="reveal" style="--i:5"><summary>How do I add it to Claude?</summary><p>After checkout, click <b>Add to Claude</b>, open the file, paste your key and school address, and click Install. It works in the Claude app on Mac and Windows. ChatGPT works through developer mode, see the <a href="/chatgpt/">ChatGPT guide</a>.</p></details>
       <details class="reveal" style="--i:6"><summary>Does it cost anything?</summary><p>The first 7 days are free. After that it's $4 CAD a month, and you can cancel anytime from the <a href="/pro/#manage">billing page</a>.</p></details>
       <details class="reveal" style="--i:7"><summary>Something isn't working</summary><p>Run <code>npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz doctor</code>. It checks everything and tells you how to fix it. Or <a href="/contact/">contact us</a>.</p></details>
       </div>

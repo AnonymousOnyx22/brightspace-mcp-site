@@ -61,3 +61,10 @@
   [headers.values]
     Content-Type = "application/gzip"
     Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/pro/*.mcpb"
+  [headers.values]
+    Content-Type = "application/octet-stream"
+    Content-Disposition = "attachment"
+    Cache-Control = "public, max-age=0, must-revalidate"

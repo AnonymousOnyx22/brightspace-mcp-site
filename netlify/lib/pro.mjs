@@ -146,28 +146,41 @@ export async function activatePage(req) {
   return page("You're in", `
     <div class="hero">
       <p class="eyebrow enter" style="--i:0">Your 7-day free trial has started</p>
-      <h1 class="enter" style="--i:1">One last step: run setup.</h1>
-      <p class="lede enter" style="--i:2">Setup connects your school and AI apps and turns on alerts. It takes about two minutes.</p>
-      <div class="setup enter" style="--i:3" data-setup>
-        <div class="tabs" role="tablist" aria-label="Your computer">
-          <button role="tab" type="button" data-os="win" aria-selected="true">Windows</button>
-          <button role="tab" type="button" data-os="mac" aria-selected="false">Mac</button>
-          <button role="tab" type="button" data-os="linux" aria-selected="false">Linux</button>
-        </div>
-        <div class="panel" data-panel="win">
-          <ol class="mini"><li>Download your setup file and double-click it. Your key is already inside. If Node.js isn't installed, it opens the installer first: click through it, then double-click the setup file again.</li><li>If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</li><li>Sign in to Brightspace in the window that opens.</li></ol>
-          <div class="cta-row"><a class="btn primary" href="/pro/setup.cmd?session_id=${esc(sessionId)}" download>Download setup for Windows</a></div>
-        </div>
-        <div class="panel" data-panel="mac" hidden>
-          <ol class="mini"><li>Tap <b>Copy</b> below.</li><li>Open <b>Terminal</b>: press <kbd>⌘</kbd> <kbd>Space</kbd>, type "Terminal", press Enter.</li><li>Paste with <kbd>⌘</kbd> <kbd>V</kbd>, press Enter, and sign in to Brightspace when the window opens. Everything else installs by itself.</li></ol>
-          <div class="cmd big"><span class="p">$</span><span>${esc(command)}</span><button class="copy" type="button" data-copy="${esc(command)}"><span>Copy</span></button></div>
-        </div>
-        <div class="panel" data-panel="linux" hidden>
-          <ol class="mini"><li>Open a terminal, paste this command and press Enter, then sign in to Brightspace.</li></ol>
-          <div class="cmd big"><span class="p">$</span><span>${esc(command)}</span><button class="copy" type="button" data-copy="${esc(command)}"><span>Copy</span></button></div>
-        </div>
+      <h1 class="enter" style="--i:1">Add it to Claude in one click.</h1>
+      <p class="lede enter" style="--i:2">Works in the Claude app on Mac and Windows. No Terminal, nothing else to install. Don't have Claude yet? <a href="https://claude.ai/download" rel="noopener">Get the free app</a> first.</p>
+      <div class="setup enter" style="--i:3">
+        <ol class="mini">
+          <li>Click <b>Add to Claude</b> below and open the file. Claude shows an <b>Install</b> screen.</li>
+          <li>Paste your key and your school's Brightspace address (copy it from your browser, like <code>yourschool.brightspace.com</code>), then click <b>Install</b>.</li>
+          <li>Ask Claude <i>"What should I work on right now?"</i> A window opens once so you can sign in to Brightspace.</li>
+        </ol>
+        <div class="cta-row"><a class="btn primary" href="/pro/brightspace-mcp-pro.mcpb" download>Add to Claude</a></div>
+        <p class="note" style="margin-top:16px">Your key:</p>
+        <div class="cmd"><span>${esc(key)}</span><button class="copy" type="button" data-copy="${esc(key)}"><span>Copy</span></button></div>
+        <p class="note">Save it somewhere safe. You need it on another computer or to manage billing.</p>
       </div>
-      <p class="note">Save your key. You need it to set up another computer or manage billing: <code>${esc(key)}</code></p>
+      <details style="margin-top:24px">
+        <summary>Using Cursor, VS Code, Windsurf or another AI app?</summary>
+        <div class="setup" data-setup style="margin-top:14px">
+          <div class="tabs" role="tablist" aria-label="Your computer">
+            <button role="tab" type="button" data-os="win" aria-selected="true">Windows</button>
+            <button role="tab" type="button" data-os="mac" aria-selected="false">Mac</button>
+            <button role="tab" type="button" data-os="linux" aria-selected="false">Linux</button>
+          </div>
+          <div class="panel" data-panel="win">
+            <ol class="mini"><li>Download your setup file and double-click it. Your key is already inside. If Node.js isn't installed, it opens the installer first: click through it, then double-click the setup file again.</li><li>If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</li><li>Sign in to Brightspace in the window that opens.</li></ol>
+            <div class="cta-row"><a class="btn" href="/pro/setup.cmd?session_id=${esc(sessionId)}" download>Download setup for Windows</a></div>
+          </div>
+          <div class="panel" data-panel="mac" hidden>
+            <ol class="mini"><li>Tap <b>Copy</b> below.</li><li>Open <b>Terminal</b>: press <kbd>⌘</kbd> <kbd>Space</kbd>, type "Terminal", press Enter.</li><li>Paste with <kbd>⌘</kbd> <kbd>V</kbd>, press Enter, and sign in to Brightspace when the window opens.</li></ol>
+            <div class="cmd big"><span class="p">$</span><span>${esc(command)}</span><button class="copy" type="button" data-copy="${esc(command)}"><span>Copy</span></button></div>
+          </div>
+          <div class="panel" data-panel="linux" hidden>
+            <ol class="mini"><li>Open a terminal, paste this command and press Enter, then sign in to Brightspace.</li></ol>
+            <div class="cmd big"><span class="p">$</span><span>${esc(command)}</span><button class="copy" type="button" data-copy="${esc(command)}"><span>Copy</span></button></div>
+          </div>
+        </div>
+      </details>
       <form method="POST" action="/api/manage" style="margin-top:24px"><input type="hidden" name="key" value="${esc(key)}"><button class="btn" type="submit">Manage or cancel subscription</button></form>
     </div>`);
 }
