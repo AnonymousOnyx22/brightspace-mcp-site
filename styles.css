@@ -67,3 +67,10 @@ table.cmp th{font-size:14px;color:var(--muted)}
 pre{background:var(--code-bg);color:var(--code-text);border-radius:12px;padding:14px 16px;overflow-x:auto;font:14px/1.5 ui-monospace,Menlo,Consolas,monospace}
 .crumbs{font-size:14px;color:var(--muted);margin:8px 0 0}
 .crumbs a{color:var(--muted)}
+.waitlist{display:grid;gap:14px;max-width:440px}
+.waitlist label{display:grid;gap:6px;font-weight:600;font-size:15px}
+.waitlist input{font:inherit;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text)}
+.waitlist button{justify-content:center;cursor:pointer;font:inherit;font-weight:600}
+.hp{position:absolute;left:-9999px}
+.legal h2{font-size:20px;margin:32px 0 8px}
+.legal p,.legal li{color:var(--muted);max-width:68ch}
