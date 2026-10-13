@@ -22,6 +22,7 @@ export function keyEmail({ key, school, site = "https://brightspacemcp.com" }) {
     "Your trial is free for 7 days, then $4 CAD a month. Manage or cancel anytime:",
     `${site}/pro/#manage`,
     "",
+    `Step-by-step guide: ${site}/install/`,
     `Questions? ${site}/contact/`,
   ].join("\n");
   const html = `<!doctype html><html><body style="margin:0;background:#f7f8fb;font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#141a2e">

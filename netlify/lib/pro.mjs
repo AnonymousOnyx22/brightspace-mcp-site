@@ -260,7 +260,7 @@ export async function activatePage(req) {
           <li>${school ? `Your key and school (<code>${esc(school)}</code>) are already filled in. Click <b>Install</b>.` : `Your key is already filled in. Add your school's Brightspace address (copy it from your browser, like <code>yourschool.brightspace.com</code>) and click <b>Install</b>.`}</li>
           <li>Ask Claude <i>"What should I work on right now?"</i> A window opens once so you can sign in to Brightspace.</li>
         </ol>
-        <div class="cta-row"><a class="btn primary" href="/pro/claude.mcpb?session_id=${esc(sessionId)}" download>Add to Claude</a></div>
+        <div class="cta-row"><a class="btn primary" href="/pro/claude.mcpb?session_id=${esc(sessionId)}" download>Add to Claude</a><a class="btn" href="/install/" target="_blank" rel="noopener">Step-by-step guide</a></div>
         <p class="note" style="margin-top:16px">Your key:</p>
         <div class="cmd"><span>${esc(key)}</span><button class="copy" type="button" data-copy="${esc(key)}"><span>Copy</span></button></div>
         <p class="note">We also emailed it to you. Save it somewhere safe: you need it on another computer or to manage billing.</p>
