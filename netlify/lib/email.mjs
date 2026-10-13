@@ -16,7 +16,7 @@ export function keyEmail({ key, school, site = "https://brightspacemcp.com" }) {
     "",
     "Set it up on your Mac or Windows laptop:",
     `1. Open this link on the laptop: ${start}`,
-    "2. Click Add to Claude, open the downloaded file and click Install.",
+    "2. Open the Claude app, click Add to Claude, drag the downloaded file into the Claude window and click Install.",
     "3. Ask Claude \"What should I work on right now?\" and sign in to Brightspace once.",
     "",
     "Your trial is free for 7 days, then $4 CAD a month. Manage or cancel anytime:",
@@ -34,7 +34,7 @@ export function keyEmail({ key, school, site = "https://brightspacemcp.com" }) {
   <p style="margin:0 0 24px"><a href="${esc(start)}" style="display:inline-block;background:#e8562b;color:#fff;text-decoration:none;font-weight:600;padding:14px 22px;border-radius:12px">Finish setup on your laptop</a></p>
   <ol style="color:#5a6280;line-height:1.7;padding-left:20px;margin:0 0 24px">
     <li>Open the button above on your laptop and click <b>Add to Claude</b>. <a href="${esc(claude)}" style="color:#e8562b">Direct download</a></li>
-    <li>Open the downloaded file and click <b>Install</b>.</li>
+    <li>Drag the downloaded file into the Claude app and click <b>Install</b>.</li>
     <li>Ask Claude "What should I work on right now?" and sign in to Brightspace once.</li>
   </ol>
   <p style="color:#5a6280;font-size:14px;line-height:1.6;margin:0">Free for 7 days, then $4 CAD a month. <a href="${esc(site)}/pro/#manage" style="color:#e8562b">Manage or cancel</a> anytime. Questions? <a href="${esc(site)}/contact/" style="color:#e8562b">Contact us</a>.</p>

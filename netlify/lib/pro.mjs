@@ -252,11 +252,11 @@ export async function activatePage(req) {
       </div>
       <div class="only-laptop">
       <h1 class="enter" style="--i:1">Add it to Claude in one click.</h1>
-      <p class="lede enter" style="--i:2">Works in the Claude app on Mac and Windows. No Terminal, nothing else to install. Don't have Claude yet? <a href="https://claude.ai/download" rel="noopener">Get the free app</a> first.</p>
+      <p class="lede enter" style="--i:2">Works in the Claude app on Mac and Windows. No Terminal, nothing else to install.</p>
       <div class="setup enter" style="--i:3">
         <ol class="mini">
-          <li>Click <b>Add to Claude</b> below. Your browser downloads a small file.</li>
-          <li><b>Open the downloaded file</b> (click it in your browser's downloads, top right). Claude opens and shows an <b>Install</b> screen.</li>
+          <li>Open the <b>Claude app</b> on your computer. Don't have it? <a href="https://claude.ai/download" rel="noopener">Get it free</a>.</li>
+          <li>Click <b>Add to Claude</b> below, then <b>drag the downloaded file into the Claude window</b>. Claude shows an <b>Install</b> screen.</li>
           <li>${school ? `Your key and school (<code>${esc(school)}</code>) are already filled in. Click <b>Install</b>.` : `Your key is already filled in. Add your school's Brightspace address (copy it from your browser, like <code>yourschool.brightspace.com</code>) and click <b>Install</b>.`}</li>
           <li>Ask Claude <i>"What should I work on right now?"</i> A window opens once so you can sign in to Brightspace.</li>
         </ol>
