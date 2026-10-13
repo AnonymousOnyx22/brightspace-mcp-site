@@ -29,6 +29,14 @@
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
+# Keep Google's verification file reachable on the old address so the
+# Search Console change of address can re-verify it.
+[[redirects]]
+  from = "https://brightspace-mcp.netlify.app/google3fe45c4490f93b23.html"
+  to = "/google3fe45c4490f93b23.html"
+  status = 200
+  force = true
+
 # Old Netlify address now permanently redirects to the custom domain.
 [[redirects]]
   from = "https://brightspace-mcp.netlify.app/*"
