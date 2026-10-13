@@ -142,12 +142,12 @@ export async function activatePage(req) {
   }
   const subscriptionId = typeof session.subscription === "string" ? session.subscription : session.subscription.id;
   const key = licenseKeyFor(subscriptionId);
-  const command = `npx brightspace-d2l-mcp setup --key ${key}`;
+  const command = `curl -fsSL https://brightspacemcp.com/install.sh | bash -s -- ${key}`;
   return page("You're in", `
     <div class="hero">
       <p class="eyebrow enter" style="--i:0">Your 7-day free trial has started</p>
       <h1 class="enter" style="--i:1">One last step: run setup.</h1>
-      <p class="lede enter" style="--i:2">Setup connects your school and AI apps and turns on alerts. You need <a href="https://nodejs.org/en/download" rel="noopener">Node.js</a> and Chrome or Edge.</p>
+      <p class="lede enter" style="--i:2">Setup connects your school and AI apps and turns on alerts. It takes about two minutes.</p>
       <div class="setup enter" style="--i:3" data-setup>
         <div class="tabs" role="tablist" aria-label="Your computer">
           <button role="tab" type="button" data-os="win" aria-selected="true">Windows</button>
@@ -155,11 +155,11 @@ export async function activatePage(req) {
           <button role="tab" type="button" data-os="linux" aria-selected="false">Linux</button>
         </div>
         <div class="panel" data-panel="win">
-          <ol class="mini"><li>Download your setup file and double-click it. Your key is already inside.</li><li>If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</li><li>Sign in to Brightspace in the window that opens.</li></ol>
+          <ol class="mini"><li>Download your setup file and double-click it. Your key is already inside. If Node.js isn't installed, it opens the installer first: click through it, then double-click the setup file again.</li><li>If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</li><li>Sign in to Brightspace in the window that opens.</li></ol>
           <div class="cta-row"><a class="btn primary" href="/pro/setup.cmd?session_id=${esc(sessionId)}" download>Download setup for Windows</a></div>
         </div>
         <div class="panel" data-panel="mac" hidden>
-          <ol class="mini"><li>Open <b>Terminal</b>: press <kbd>⌘</kbd> <kbd>Space</kbd>, type "Terminal", press Enter.</li><li>Paste this command and press Enter, then sign in to Brightspace.</li></ol>
+          <ol class="mini"><li>Tap <b>Copy</b> below.</li><li>Open <b>Terminal</b>: press <kbd>⌘</kbd> <kbd>Space</kbd>, type "Terminal", press Enter.</li><li>Paste with <kbd>⌘</kbd> <kbd>V</kbd>, press Enter, and sign in to Brightspace when the window opens. Everything else installs by itself.</li></ol>
           <div class="cmd big"><span class="p">$</span><span>${esc(command)}</span><button class="copy" type="button" data-copy="${esc(command)}"><span>Copy</span></button></div>
         </div>
         <div class="panel" data-panel="linux" hidden>

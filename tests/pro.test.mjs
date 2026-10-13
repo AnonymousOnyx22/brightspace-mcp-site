@@ -51,7 +51,7 @@ test("activation page shows the key only for a completed payment", async () => {
   const ok = await handler(new Request("https://brightspacemcp.com/pro/activate?session_id=cs_done"));
   assert.equal(ok.status, 200);
   const html = await ok.text();
-  assert.ok(html.includes(`setup --key ${licenseKeyFor("sub_9Zz")}`));
+  assert.ok(html.includes(`install.sh | bash -s -- ${licenseKeyFor("sub_9Zz")}`));
   assert.ok(html.includes("/pro/setup.cmd?session_id=cs_done"));
   assert.equal((await handler(new Request("https://brightspacemcp.com/pro/activate?session_id=cs_open"))).status, 402);
   assert.equal((await handler(new Request("https://brightspacemcp.com/pro/activate?session_id=<script>"))).status, 400);
