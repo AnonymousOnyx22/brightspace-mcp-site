@@ -33,6 +33,7 @@
       <div class="only-phone"><p class="lede">Open this page on your Mac or Windows laptop. Brightspace MCP works in the Claude app there.</p></div>
       <form id="keyform" class="waitlist" style="margin-top:8px">
         <label>Your key<input id="key" name="key" required placeholder="bmp_..." autocomplete="off" spellcheck="false"></label>
+        <label>Your school's Brightspace address<input id="school" name="school" placeholder="yourschool.brightspace.com" autocomplete="off" spellcheck="false"></label>
         <button class="btn primary" type="submit">Continue</button>
       </form>
       <p class="note">Your key is on the page you saw after checkout. No key yet? <a href="/pro/">Start a 7-day free trial</a>.</p>
@@ -40,10 +41,10 @@
         <div class="setup" style="margin-top:20px">
           <ol class="mini">
             <li>Click <b>Add to Claude</b>. Your browser downloads a small file. Don't have Claude? <a href="https://claude.ai/download" rel="noopener">Get the free app</a> first.</li><li><b>Open the downloaded file</b> (click it in your browser's downloads, top right). Claude opens and shows an <b>Install</b> screen.</li>
-            <li>Paste your key and your school's Brightspace address (like <code>yourschool.brightspace.com</code>), then click <b>Install</b>.</li>
+            <li>Your key is already filled in<span id="schoolnote"></span>. Click <b>Install</b>.</li>
             <li>Ask Claude <i>"What should I work on right now?"</i> A window opens once so you can sign in to Brightspace.</li>
           </ol>
-          <div class="cta-row"><a class="btn primary" href="/pro/brightspace-mcp-pro.mcpb" download>Add to Claude</a></div>
+          <div class="cta-row"><a class="btn primary" id="claudelink" href="/pro/brightspace-mcp-pro.mcpb" download>Add to Claude</a></div>
           <p class="note" style="margin-top:16px">Your key:</p>
           <div class="cmd"><span id="keytext"></span><button class="copy" type="button" id="keycopy" data-copy=""><span>Copy</span></button></div>
         </div>
@@ -57,7 +58,9 @@
 <script>
 (function () {
   var pattern = /^bmp_[A-Za-z0-9]+_[A-Za-z0-9_-]{16,}$/;
-  function show(key) {
+  function show(key, school) {
+    document.getElementById("claudelink").setAttribute("href", "/pro/claude.mcpb?k=" + encodeURIComponent(key) + (school ? "&s=" + encodeURIComponent(school) : ""));
+    document.getElementById("schoolnote").textContent = school ? ", with your school (" + school + ")" : ". Also type your school's Brightspace address (like yourschool.brightspace.com)";
     document.getElementById("keyform").hidden = true;
     document.getElementById("steps").hidden = false;
     document.getElementById("keytext").textContent = key;
@@ -67,13 +70,15 @@
     document.getElementById("maccopy").setAttribute("data-copy", cmd);
   }
   var fromLink = decodeURIComponent((location.hash.match(/k=([^&]+)/) || [])[1] || "");
-  if (pattern.test(fromLink)) show(fromLink);
+  var schoolLink = decodeURIComponent((location.hash.match(/s=([^&]+)/) || [])[1] || "");
+  if (pattern.test(fromLink)) show(fromLink, schoolLink);
   document.getElementById("keyform").addEventListener("submit", function (e) {
     e.preventDefault();
     var key = document.getElementById("key").value.trim();
     if (!pattern.test(key)) { document.getElementById("key").setCustomValidity("That doesn't look like a key. It starts with bmp_"); document.getElementById("key").reportValidity(); return; }
-    history.replaceState(null, "", "#k=" + key);
-    show(key);
+    var school = document.getElementById("school").value.trim();
+    history.replaceState(null, "", "#k=" + key + (school ? "&s=" + encodeURIComponent(school) : ""));
+    show(key, school);
   });
   document.getElementById("key").addEventListener("input", function () { this.setCustomValidity(""); });
 })();

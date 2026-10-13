@@ -1,5 +1,6 @@
 import { test, beforeEach } from "node:test";
 import assert from "node:assert/strict";
+import * as fs from "node:fs";
 
 process.env.LICENSE_SECRET = "test-secret-test-secret-test-secret-0123";
 process.env.STRIPE_SECRET_KEY = "sk_test_x";
@@ -13,6 +14,7 @@ let stripe;
 beforeEach(() => {
   stripe = { calls: [], responses: {} };
   globalThis.fetch = async (url, init = {}) => {
+    if (String(url).endsWith("/pro/brightspace-mcp-pro.mcpb")) return new Response(fs.readFileSync("pro/brightspace-mcp-pro.mcpb"));
     const path = new URL(url).pathname.replace("/v1/", "");
     stripe.calls.push({ path, method: init.method, body: init.body?.toString() });
     const [status, body] = stripe.responses[`${init.method} ${path}`] ?? [404, { error: { message: "No such thing" } }];
@@ -93,4 +95,33 @@ test("the Windows setup file carries the key, only after checkout", async () => 
   assert.ok(text.includes(`setup --key ${licenseKeyFor("sub_9Zz")}\r\n`));
   assert.ok(text.startsWith("@echo off\r\n"));
   assert.equal((await handler(new Request("https://brightspacemcp.com/pro/setup.cmd?session_id=cs_nope"))).status, 404);
+});
+
+test("checkout asks for the school", async () => {
+  stripe.responses["POST checkout/sessions"] = [200, { url: "https://checkout.stripe.com/x" }];
+  await handler(new Request("https://brightspacemcp.com/api/checkout", { method: "POST" }));
+  const body = new URLSearchParams(stripe.calls[0].body);
+  assert.equal(body.get("custom_fields[0][key]"), "school");
+  assert.equal(body.get("custom_fields[0][optional]"), "true");
+});
+
+test("Add to Claude downloads the extension with key and school filled in", async () => {
+  const { readEntry } = await import("../netlify/lib/zip.mjs");
+  stripe.responses["GET checkout/sessions/cs_done"] = [200, {
+    status: "complete", subscription: "sub_9Zz",
+    custom_fields: [{ key: "school", text: { value: "  fleming.brightspace.com\u0007 " } }],
+  }];
+  const res = await handler(new Request("https://brightspacemcp.com/pro/claude.mcpb?session_id=cs_done"));
+  assert.equal(res.status, 200);
+  const manifest = JSON.parse(readEntry(Buffer.from(await res.arrayBuffer()), "manifest.json"));
+  assert.equal(manifest.user_config.license_key.default, licenseKeyFor("sub_9Zz"));
+  assert.equal(manifest.user_config.school.default, "fleming.brightspace.com");
+
+  const page = await (await handler(new Request("https://brightspacemcp.com/pro/activate?session_id=cs_done"))).text();
+  assert.ok(page.includes("/pro/claude.mcpb?session_id=cs_done"));
+  assert.ok(page.includes("are already filled in"));
+
+  const byKey = await handler(new Request(`https://brightspacemcp.com/pro/claude.mcpb?k=${licenseKeyFor("sub_9Zz")}&s=x.brightspace.com`));
+  assert.equal(JSON.parse(readEntry(Buffer.from(await byKey.arrayBuffer()), "manifest.json")).user_config.school.default, "x.brightspace.com");
+  assert.equal((await handler(new Request("https://brightspacemcp.com/pro/claude.mcpb?k=bmp_9Zz_AAAAAAAAAAAAAAAAAAAAAAAA"))).status, 404);
 });

@@ -109,6 +109,77 @@ async function readBody(req) {
   return Object.fromEntries(new URLSearchParams(await req.text()));
 }
 
+// ---------- personalized Claude extension ----------
+
+export function cleanSchool(value) {
+  return String(value ?? "").replace(/[\u0000-\u001f\u007f]/g, "").trim().slice(0, 200);
+}
+
+export const schoolFromSession = (session) =>
+  cleanSchool(session?.custom_fields?.find?.((f) => f.key === "school")?.text?.value);
+
+let baseExtension = null;
+async function loadBaseExtension() {
+  if (baseExtension) return baseExtension;
+  const res = await fetch(`${publicUrl()}/pro/brightspace-mcp-pro.mcpb`, { signal: AbortSignal.timeout(20_000) });
+  if (!res.ok) throw new Error(`Couldn't load the extension (${res.status}).`);
+  baseExtension = Buffer.from(await res.arrayBuffer());
+  return baseExtension;
+}
+
+/** The extension with this student's key (and school, when known) already filled in. */
+export async function personalizedExtension(key, school) {
+  const { readEntry, replaceEntry } = await import("./zip.mjs");
+  const zip = await loadBaseExtension();
+  const manifest = JSON.parse(readEntry(zip, "manifest.json").toString("utf8"));
+  manifest.user_config.license_key.default = key;
+  if (school) manifest.user_config.school.default = school;
+  return replaceEntry(zip, "manifest.json", Buffer.from(JSON.stringify(manifest, null, 2) + "\n"));
+}
+
+export async function claudeExtension(req) {
+  const q = new URL(req.url).searchParams;
+  let key = null;
+  let school = cleanSchool(q.get("s"));
+  try {
+    const sessionId = q.get("session_id");
+    if (sessionId && /^cs_[A-Za-z0-9_]+$/.test(sessionId)) {
+      const session = await stripeCall("GET", `checkout/sessions/${sessionId}`).catch(() => null);
+      if (session?.status === "complete" && session.subscription) {
+        key = licenseKeyFor(typeof session.subscription === "string" ? session.subscription : session.subscription.id);
+        school = school || schoolFromSession(session);
+      }
+    } else if (q.get("k") && subscriptionFromKey(q.get("k"))) {
+      key = q.get("k").trim();
+    }
+  } catch {
+    key = null;
+  }
+  if (!key) return problem("Download not available", "This link needs a valid key. Use the link from the page you saw after checkout.", 404);
+  try {
+    const file = await personalizedExtension(key, school);
+    // Streamed, because a buffered function response is capped near 6 MB.
+    let sent = 0;
+    const body = new ReadableStream({
+      pull(controller) {
+        if (sent >= file.length) return controller.close();
+        controller.enqueue(new Uint8Array(file.subarray(sent, sent + 256 * 1024)));
+        sent += 256 * 1024;
+      },
+    });
+    return new Response(body, {
+      headers: {
+        "content-type": "application/octet-stream",
+        "content-disposition": 'attachment; filename="Brightspace MCP Pro.mcpb"',
+        "content-length": String(file.length),
+        ...HEADERS,
+      },
+    });
+  } catch (error) {
+    return problem("Download not available", `${esc(error.message)} Try again in a minute.`, 503);
+  }
+}
+
 // ---------- routes ----------
 
 export async function checkout() {
@@ -120,6 +191,13 @@ export async function checkout() {
       cancel_url: `${publicUrl()}/pro/`,
       allow_promotion_codes: true,
       payment_method_collection: "always",
+      custom_fields: [{
+        key: "school",
+        label: { type: "custom", custom: "Your school's Brightspace address" },
+        type: "text",
+        optional: true,
+        text: { maximum_length: 200 },
+      }],
       subscription_data: { trial_period_days: 7 },
     });
     return redirect(session.url);
@@ -142,6 +220,7 @@ export async function activatePage(req) {
   }
   const subscriptionId = typeof session.subscription === "string" ? session.subscription : session.subscription.id;
   const key = licenseKeyFor(subscriptionId);
+  const school = schoolFromSession(session);
   const command = `curl -fsSL https://brightspacemcp.com/install.sh | bash -s -- ${key}`;
   return page("You're in", `
     <div class="hero">
@@ -149,7 +228,7 @@ export async function activatePage(req) {
       <div class="only-phone">
         <h1 class="enter" style="--i:1">You're in. Finish on your laptop.</h1>
         <p class="lede enter" style="--i:2">Brightspace MCP works in the Claude app on your Mac or Windows laptop. Send yourself the setup link, then open it on your laptop. It takes about a minute.</p>
-        <div class="cta-row enter" style="--i:3"><button class="btn primary" type="button" data-share="${publicUrl()}/start/#k=${esc(key)}">Send to my laptop</button></div>
+        <div class="cta-row enter" style="--i:3"><button class="btn primary" type="button" data-share="${publicUrl()}/start/#k=${esc(key)}${school ? `&s=${encodeURIComponent(school)}` : ""}">Send to my laptop</button></div>
         <p class="note">Or, on your laptop, go to <b>brightspacemcp.com/start</b> and paste your key:</p>
         <div class="cmd"><span>${esc(key)}</span><button class="copy" type="button" data-copy="${esc(key)}"><span>Copy</span></button></div>
         <p class="note">Nothing is charged for 7 days.</p>
@@ -159,11 +238,12 @@ export async function activatePage(req) {
       <p class="lede enter" style="--i:2">Works in the Claude app on Mac and Windows. No Terminal, nothing else to install. Don't have Claude yet? <a href="https://claude.ai/download" rel="noopener">Get the free app</a> first.</p>
       <div class="setup enter" style="--i:3">
         <ol class="mini">
-          <li>Click <b>Add to Claude</b> below. Your browser downloads a small file.</li><li><b>Open the downloaded file</b> (click it in your browser\'s downloads, top right). Claude opens and shows an <b>Install</b> screen.</li>
-          <li>Paste your key and your school's Brightspace address (copy it from your browser, like <code>yourschool.brightspace.com</code>), then click <b>Install</b>.</li>
+          <li>Click <b>Add to Claude</b> below. Your browser downloads a small file.</li>
+          <li><b>Open the downloaded file</b> (click it in your browser's downloads, top right). Claude opens and shows an <b>Install</b> screen.</li>
+          <li>${school ? `Your key and school (<code>${esc(school)}</code>) are already filled in. Click <b>Install</b>.` : `Your key is already filled in. Add your school's Brightspace address (copy it from your browser, like <code>yourschool.brightspace.com</code>) and click <b>Install</b>.`}</li>
           <li>Ask Claude <i>"What should I work on right now?"</i> A window opens once so you can sign in to Brightspace.</li>
         </ol>
-        <div class="cta-row"><a class="btn primary" href="/pro/brightspace-mcp-pro.mcpb" download>Add to Claude</a></div>
+        <div class="cta-row"><a class="btn primary" href="/pro/claude.mcpb?session_id=${esc(sessionId)}" download>Add to Claude</a></div>
         <p class="note" style="margin-top:16px">Your key:</p>
         <div class="cmd"><span>${esc(key)}</span><button class="copy" type="button" data-copy="${esc(key)}"><span>Copy</span></button></div>
         <p class="note">Save it somewhere safe. You need it on another computer or to manage billing.</p>
