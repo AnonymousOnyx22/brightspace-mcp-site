@@ -43,3 +43,9 @@
   to = "https://brightspacemcp.com/:splat"
   status = 301
   force = true
+
+[[headers]]
+  for = "/brightspace-setup.cmd"
+  [headers.values]
+    Content-Type = "application/octet-stream"
+    Content-Disposition = "attachment; filename=\"brightspace-setup.cmd\""
