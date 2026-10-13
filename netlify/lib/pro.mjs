@@ -182,7 +182,11 @@ export async function manage(req) {
   if (!id) return problem("That key isn't valid", "Check the key you saved after paying, or use the <a href=\"/contact/\">contact form</a>.");
   try {
     const sub = await stripeCall("GET", `subscriptions/${id}`);
-    const portal = await stripeCall("POST", "billing_portal/sessions", { customer: sub.customer, return_url: `${publicUrl()}/pro/` });
+    const portal = await stripeCall("POST", "billing_portal/sessions", {
+      customer: sub.customer,
+      return_url: `${publicUrl()}/pro/`,
+      configuration: env("STRIPE_PORTAL_CONFIG") || undefined,
+    });
     return redirect(portal.url);
   } catch (error) {
     return problem("Couldn't open billing", `${esc(error.message)} Use the <a href="/contact/">contact form</a> and we'll sort it out.`, 503);
