@@ -69,7 +69,7 @@ pre{background:var(--code-bg);color:var(--code-text);border-radius:12px;padding:
 .crumbs a{color:var(--muted)}
 .waitlist{display:grid;gap:14px;max-width:440px}
 .waitlist label{display:grid;gap:6px;font-weight:600;font-size:15px}
-.waitlist input{font:inherit;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text)}
+.waitlist input,.waitlist select,.waitlist textarea{font:inherit;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--text)}
 .waitlist button{justify-content:center;cursor:pointer;font:inherit;font-weight:600}
 .hp{position:absolute;left:-9999px}
 .legal h2{font-size:20px;margin:32px 0 8px}
