@@ -119,6 +119,8 @@ export async function checkout() {
       success_url: `${publicUrl()}/pro/activate?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${publicUrl()}/pro/`,
       allow_promotion_codes: true,
+      payment_method_collection: "always",
+      subscription_data: { trial_period_days: 7 },
     });
     return redirect(session.url);
   } catch (error) {
@@ -140,17 +142,74 @@ export async function activatePage(req) {
   }
   const subscriptionId = typeof session.subscription === "string" ? session.subscription : session.subscription.id;
   const key = licenseKeyFor(subscriptionId);
-  const command = `npx brightspace-d2l-mcp pro activate ${key}`;
-  return page("Your Pro key", `
+  const command = `npx brightspace-d2l-mcp setup --key ${key}`;
+  return page("You're in", `
     <div class="hero">
-      <p class="eyebrow enter" style="--i:0">Payment received</p>
-      <h1 class="enter" style="--i:1">You're Pro. One last step.</h1>
-      <p class="lede enter" style="--i:2">Run this on the computer where you set up the free version. It turns on deadline alerts, the daily digest, grade alerts and calendar sync.</p>
-      <div class="cmd big enter" style="--i:3"><span class="p">$</span><span>${esc(command)}</span><button class="copy" type="button" data-copy="${esc(command)}"><span>Copy</span></button></div>
-      <p class="note">Save your key somewhere safe. You'll need it to activate Pro on another computer: <code>${esc(key)}</code></p>
-      <p class="note">Haven't set up the free version yet? <a href="/#setup">Do that first</a>, then run the command above.</p>
+      <p class="eyebrow enter" style="--i:0">Your 7-day free trial has started</p>
+      <h1 class="enter" style="--i:1">One last step: run setup.</h1>
+      <p class="lede enter" style="--i:2">Setup connects your school and AI apps and turns on alerts. You need <a href="https://nodejs.org/en/download" rel="noopener">Node.js</a> and Chrome or Edge.</p>
+      <div class="setup enter" style="--i:3" data-setup>
+        <div class="tabs" role="tablist" aria-label="Your computer">
+          <button role="tab" type="button" data-os="win" aria-selected="true">Windows</button>
+          <button role="tab" type="button" data-os="mac" aria-selected="false">Mac</button>
+          <button role="tab" type="button" data-os="linux" aria-selected="false">Linux</button>
+        </div>
+        <div class="panel" data-panel="win">
+          <ol class="mini"><li>Download your setup file and double-click it. Your key is already inside.</li><li>If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</li><li>Sign in to Brightspace in the window that opens.</li></ol>
+          <div class="cta-row"><a class="btn primary" href="/pro/setup.cmd?session_id=${esc(sessionId)}" download>Download setup for Windows</a></div>
+        </div>
+        <div class="panel" data-panel="mac" hidden>
+          <ol class="mini"><li>Open <b>Terminal</b>: press <kbd>⌘</kbd> <kbd>Space</kbd>, type "Terminal", press Enter.</li><li>Paste this command and press Enter, then sign in to Brightspace.</li></ol>
+          <div class="cmd big"><span class="p">$</span><span>${esc(command)}</span><button class="copy" type="button" data-copy="${esc(command)}"><span>Copy</span></button></div>
+        </div>
+        <div class="panel" data-panel="linux" hidden>
+          <ol class="mini"><li>Open a terminal, paste this command and press Enter, then sign in to Brightspace.</li></ol>
+          <div class="cmd big"><span class="p">$</span><span>${esc(command)}</span><button class="copy" type="button" data-copy="${esc(command)}"><span>Copy</span></button></div>
+        </div>
+      </div>
+      <p class="note">Save your key. You need it to set up another computer or manage billing: <code>${esc(key)}</code></p>
       <form method="POST" action="/api/manage" style="margin-top:24px"><input type="hidden" name="key" value="${esc(key)}"><button class="btn" type="submit">Manage or cancel subscription</button></form>
     </div>`);
+}
+
+async function completedKey(sessionId) {
+  if (!/^cs_[A-Za-z0-9_]+$/.test(sessionId)) return null;
+  const session = await stripeCall("GET", `checkout/sessions/${sessionId}`).catch(() => null);
+  if (!session || session.status !== "complete" || !session.subscription) return null;
+  return licenseKeyFor(typeof session.subscription === "string" ? session.subscription : session.subscription.id);
+}
+
+// A Windows setup file with the student's key built in, so setup is one double-click.
+export async function windowsSetupFile(req) {
+  const key = await completedKey(new URL(req.url).searchParams.get("session_id") || "");
+  if (!key) return problem("Download not available", "This link only works after checkout.", 404);
+  const lines = [
+    "@echo off",
+    "title Brightspace MCP setup",
+    "echo.",
+    "echo  Brightspace MCP setup",
+    "echo  Connects D2L Brightspace to your AI apps and turns on alerts. It only reads, never changes anything.",
+    "echo.",
+    "where node >nul 2>nul",
+    "if errorlevel 1 (",
+    "  echo  Node.js is needed first. Opening the download page...",
+    "  echo  Install it, then double-click this file again.",
+    '  start "" https://nodejs.org/en/download',
+    "  echo.",
+    "  pause",
+    "  exit /b 1",
+    ")",
+    `call npx -y brightspace-d2l-mcp@latest setup --key ${key}`,
+    "echo.",
+    "pause",
+  ];
+  return new Response(lines.join("\r\n") + "\r\n", {
+    headers: {
+      "content-type": "application/octet-stream",
+      "content-disposition": 'attachment; filename="brightspace-setup.cmd"',
+      ...HEADERS,
+    },
+  });
 }
 
 export async function license(req) {

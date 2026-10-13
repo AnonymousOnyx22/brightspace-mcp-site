@@ -4,19 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How to Connect D2L Brightspace to Claude (Desktop and Code)</title>
-<meta name="description" content="Connect D2L Brightspace to Claude Desktop or Claude Code in about two minutes with a free MCP server. Ask Claude what's due, what you already submitted and your grades.">
+<meta name="description" content="Connect D2L Brightspace to Claude Desktop or Claude Code in about two minutes with Brightspace MCP (7-day free trial). Ask Claude what's due, what you already submitted and your grades.">
 <link rel="canonical" href="https://brightspacemcp.com/claude/">
 <meta name="theme-color" content="#0b1020">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to Connect D2L Brightspace to Claude (Desktop and Code)">
-<meta property="og:description" content="Connect D2L Brightspace to Claude Desktop or Claude Code in about two minutes with a free MCP server. Ask Claude what's due, what you already submitted and your grades.">
+<meta property="og:description" content="Connect D2L Brightspace to Claude Desktop or Claude Code in about two minutes with Brightspace MCP (7-day free trial). Ask Claude what's due, what you already submitted and your grades.">
 <meta property="og:url" content="https://brightspacemcp.com/claude/">
 <meta property="og:image" content="https://brightspacemcp.com/og.png">
 <meta property="og:site_name" content="Brightspace D2L MCP Server">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How to Connect D2L Brightspace to Claude (Desktop and Code)">
-<meta name="twitter:description" content="Connect D2L Brightspace to Claude Desktop or Claude Code in about two minutes with a free MCP server. Ask Claude what's due, what you already submitted and your grades.">
+<meta name="twitter:description" content="Connect D2L Brightspace to Claude Desktop or Claude Code in about two minutes with Brightspace MCP (7-day free trial). Ask Claude what's due, what you already submitted and your grades.">
 <meta name="twitter:image" content="https://brightspacemcp.com/og.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1020'/%3E%3Cpath d='M18 33l9 9 19-21' stroke='%23ff6a3d' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="/styles.css">
@@ -67,7 +67,7 @@
    "@type": "HowToStep",
    "position": 2,
    "name": "Run setup",
-   "text": "Open a terminal and run npx brightspace-d2l-mcp setup."
+   "text": "Open a terminal and run npx brightspace-d2l-mcp setup, then paste your key when it asks."
   },
   {
    "@type": "HowToStep",
@@ -95,18 +95,18 @@
 <div class="wrap page">
   <header class="top">
     <a class="brand" href="/"><span class="brand-mark"><svg width="18" height="18" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 33l11 11 25-27" stroke="#ff6a3d" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Brightspace MCP</a>
-    <nav><a href="/claude/">Claude</a><a href="/chatgpt/">ChatGPT</a><a href="/compare/">Compare</a><a href="/pro/">Pro</a><a class="gh" href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a></nav>
+    <nav><a href="/claude/">Claude</a><a href="/chatgpt/">ChatGPT</a><a href="/compare/">Compare</a><a href="/pro/">Pricing</a><a class="gh" href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a></nav>
   </header>
   <p class="crumbs"><a href="/">Home</a> / Brightspace + Claude</p>
   <main>
     <div class="hero">
       <h1>How to connect D2L Brightspace to Claude</h1>
 
-      <p class="lede">Claude can read your Brightspace courses through a free MCP server. It sees your due dates, what you already handed in, your grades and your course files. Setup takes about two minutes and works with Claude Desktop and Claude Code.</p>
+      <p class="lede">Claude can read your Brightspace courses through Brightspace MCP. It sees your due dates, what you already handed in, your grades and your course files. Setup takes about two minutes and works with Claude Desktop and Claude Code.</p>
       <div class="install"><div class="cmd"><span class="p">$</span><span>npx brightspace-d2l-mcp setup</span></div></div>
       <div class="figure"><img src="/demo.gif" alt="Asking an AI what to work on and getting a Brightspace to-do list that skips submitted work (sample data)" width="800" height="420" loading="lazy"></div>
       <section><h2>Steps</h2><ol class="steps">
-      <li><strong>Install Node.js.</strong> Install Node.js 20 or newer from nodejs.org.</li><li><strong>Run setup.</strong> Open a terminal and run npx brightspace-d2l-mcp setup.</li><li><strong>Enter your school.</strong> Paste any Brightspace link from your browser so setup knows your school.</li><li><strong>Sign in.</strong> A normal browser window opens. Sign in the way you always do, including Microsoft, Duo, Okta or Shibboleth.</li><li><strong>Restart Claude.</strong> Setup adds Brightspace to Claude Desktop and Claude Code. Restart Claude and ask what is due this week.</li>
+      <li><strong>Start your free trial.</strong> Get your key at <a href="/pro/">brightspacemcp.com/pro</a>. The first 7 days are free.</li><li><strong>Install Node.js.</strong> Install Node.js 20 or newer from nodejs.org.</li><li><strong>Run setup.</strong> Open a terminal and run npx brightspace-d2l-mcp setup, then paste your key when it asks.</li><li><strong>Enter your school.</strong> Paste any Brightspace link from your browser so setup knows your school.</li><li><strong>Sign in.</strong> A normal browser window opens. Sign in the way you always do, including Microsoft, Duo, Okta or Shibboleth.</li><li><strong>Restart Claude.</strong> Setup adds Brightspace to Claude Desktop and Claude Code. Restart Claude and ask what is due this week.</li>
       </ol></section>
       <section><h2>Adding it by hand</h2><p class="sub">If setup can't find Claude Desktop, add this to <code>claude_desktop_config.json</code> and restart Claude.</p>
 <pre>{
@@ -122,7 +122,7 @@
         <div class="card"><p class="ask">"What do I need on the final to get an 80?"</p></div>
         <div class="card"><p class="ask">"Summarize the rubric for my project."</p></div>
       </div></section>
-      <section><h2>Is it safe?</h2><p class="sub">It is read-only, so Claude can't submit or change anything in Brightspace. Your password is typed into your school's own sign-in page and never stored. Everything runs on your computer. The code is open source on <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a>.</p></section>
+      <section><h2>Is it safe?</h2><p class="sub">It is read-only, so Claude can't submit or change anything in Brightspace. Your password is typed into your school's own sign-in page and never stored. Everything runs on your computer. Your sign-in never leaves your computer.</p></section>
 
     </div>
   </main>
@@ -130,7 +130,7 @@
     <p>Brightspace D2L MCP Server, built by AnonymousOnyx22, a student developer. Not affiliated with D2L.
     · <a href="/">Home</a> · <a href="/claude/">Brightspace + Claude</a> · <a href="/chatgpt/">Brightspace + ChatGPT</a> · <a href="/compare/">Compare</a>
     · <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a> · <a href="https://www.npmjs.com/package/brightspace-d2l-mcp">npm</a>
-    · <a href="/pro/">Pro</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></p>
+    · <a href="/pro/">Pricing</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></p>
   </footer>
 </div>
 </body>
