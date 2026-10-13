@@ -73,3 +73,9 @@ The password is never seen or stored because the user types it into the school's
 - Repository https://github.com/AnonymousOnyx22/brightspace-d2l-mcp
 - npm https://www.npmjs.com/package/brightspace-d2l-mcp
 - Agent setup guides https://github.com/AnonymousOnyx22/brightspace-d2l-mcp/blob/main/docs/agents.md
+
+## Guides
+
+- [Connect Brightspace to Claude](https://brightspace-mcp.netlify.app/claude/)
+- [Use Brightspace with ChatGPT](https://brightspace-mcp.netlify.app/chatgpt/)
+- [Brightspace MCP servers compared](https://brightspace-mcp.netlify.app/compare/)

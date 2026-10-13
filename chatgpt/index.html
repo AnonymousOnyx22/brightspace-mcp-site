@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Use D2L Brightspace with ChatGPT (MCP Connector)</title>
+<meta name="description" content="Use D2L Brightspace in ChatGPT with a free MCP server. Step-by-step guide to connect your courses, due dates and grades through ChatGPT developer mode.">
+<link rel="canonical" href="https://brightspace-mcp.netlify.app/chatgpt/">
+<meta name="theme-color" content="#0b1020">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to Use D2L Brightspace with ChatGPT (MCP Connector)">
+<meta property="og:description" content="Use D2L Brightspace in ChatGPT with a free MCP server. Step-by-step guide to connect your courses, due dates and grades through ChatGPT developer mode.">
+<meta property="og:url" content="https://brightspace-mcp.netlify.app/chatgpt/">
+<meta property="og:image" content="https://brightspace-mcp.netlify.app/og.png">
+<meta property="og:site_name" content="Brightspace D2L MCP Server">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Use D2L Brightspace with ChatGPT (MCP Connector)">
+<meta name="twitter:description" content="Use D2L Brightspace in ChatGPT with a free MCP server. Step-by-step guide to connect your courses, due dates and grades through ChatGPT developer mode.">
+<meta name="twitter:image" content="https://brightspace-mcp.netlify.app/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1020'/%3E%3Cpath d='M18 33l9 9 19-21' stroke='%23ff6a3d' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/styles.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Brightspace MCP",
+   "item": "https://brightspace-mcp.netlify.app/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Brightspace + ChatGPT",
+   "item": "https://brightspace-mcp.netlify.app/chatgpt/"
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "HowTo",
+ "name": "Use D2L Brightspace with ChatGPT",
+ "totalTime": "PT2M",
+ "tool": [
+  {
+   "@type": "HowToTool",
+   "name": "Node.js 20 or newer"
+  },
+  {
+   "@type": "HowToTool",
+   "name": "Google Chrome or Microsoft Edge"
+  }
+ ],
+ "step": [
+  {
+   "@type": "HowToStep",
+   "position": 1,
+   "name": "Run setup",
+   "text": "Run npx brightspace-d2l-mcp setup and sign in to your school's Brightspace."
+  },
+  {
+   "@type": "HowToStep",
+   "position": 2,
+   "name": "Start HTTP mode",
+   "text": "Run npx brightspace-d2l-mcp serve --http. It prints a private URL with a token."
+  },
+  {
+   "@type": "HowToStep",
+   "position": 3,
+   "name": "Open a tunnel",
+   "text": "Make the local URL reachable, for example with cloudflared tunnel --url http://127.0.0.1:8787."
+  },
+  {
+   "@type": "HowToStep",
+   "position": 4,
+   "name": "Add the connector",
+   "text": "In ChatGPT open Settings, Apps and Connectors, Advanced, turn on Developer mode and create a connector with the tunnel URL and no authentication."
+  },
+  {
+   "@type": "HowToStep",
+   "position": 5,
+   "name": "Ask ChatGPT",
+   "text": "Start a chat with the connector on and ask what is due this week."
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<div class="wrap page">
+  <header class="top">
+    <a class="brand" href="/"><span class="brand-mark"><svg width="18" height="18" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 33l11 11 25-27" stroke="#ff6a3d" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Brightspace MCP</a>
+    <nav><a href="/claude/">Claude</a><a href="/chatgpt/">ChatGPT</a><a href="/compare/">Compare</a><a class="gh" href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a></nav>
+  </header>
+  <p class="crumbs"><a href="/">Home</a> / Brightspace + ChatGPT</p>
+  <main>
+    <div class="hero">
+      <h1>How to use D2L Brightspace with ChatGPT</h1>
+
+      <p class="lede">ChatGPT can read your Brightspace courses through a free MCP server running on your own computer. ChatGPT connects to MCP servers over the internet, so this needs HTTP mode and a tunnel. It takes about five minutes.</p>
+      <div class="figure"><img src="/demo.gif" alt="Asking an AI what to work on and getting a Brightspace to-do list that skips submitted work (sample data)" width="800" height="420" loading="lazy"></div>
+      <section><h2>Steps</h2><ol class="steps">
+      <li><strong>Run setup.</strong> Run npx brightspace-d2l-mcp setup and sign in to your school's Brightspace.</li><li><strong>Start HTTP mode.</strong> Run npx brightspace-d2l-mcp serve --http. It prints a private URL with a token.</li><li><strong>Open a tunnel.</strong> Make the local URL reachable, for example with cloudflared tunnel --url http://127.0.0.1:8787.</li><li><strong>Add the connector.</strong> In ChatGPT open Settings, Apps and Connectors, Advanced, turn on Developer mode and create a connector with the tunnel URL and no authentication.</li><li><strong>Ask ChatGPT.</strong> Start a chat with the connector on and ask what is due this week.</li>
+      </ol>
+<pre>npx brightspace-d2l-mcp setup
+npx brightspace-d2l-mcp serve --http
+cloudflared tunnel --url http://127.0.0.1:8787</pre>
+      <p class="sub"><strong>Keep the URL private.</strong> Anyone with it can read your Brightspace while the server and tunnel run. Stop both with Ctrl+C when you're done.</p></section>
+      <section><h2>Easier option</h2><p class="sub">Claude Desktop, Cursor, VS Code with Copilot and about ten other apps connect automatically with no tunnel. See the <a href="/claude/">Claude guide</a> or the <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp/blob/main/docs/agents.md">full app list</a>.</p></section>
+
+    </div>
+  </main>
+  <footer>
+    <p>Brightspace D2L MCP Server, built by AnonymousOnyx22, a student developer. Not affiliated with D2L.
+    · <a href="/">Home</a> · <a href="/claude/">Brightspace + Claude</a> · <a href="/chatgpt/">Brightspace + ChatGPT</a> · <a href="/compare/">Compare</a>
+    · <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a> · <a href="https://www.npmjs.com/package/brightspace-d2l-mcp">npm</a></p>
+  </footer>
+</div>
+</body>
+</html>

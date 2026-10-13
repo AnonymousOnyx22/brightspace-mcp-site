@@ -44,6 +44,7 @@
   "softwareVersion": "1.4.0",
   "isAccessibleForFree": true,
   "image": "https://brightspace-mcp.netlify.app/og.png",
+  "screenshot": "https://brightspace-mcp.netlify.app/demo.gif",
   "sameAs": [
     "https://github.com/AnonymousOnyx22/brightspace-d2l-mcp",
     "https://www.npmjs.com/package/brightspace-d2l-mcp",
@@ -71,6 +72,8 @@
     {"@type": "Question", "name": "Is my password saved?", "acceptedAnswer": {"@type": "Answer", "text": "No. You type your password into your school's own sign-in page in a real browser. The tool only keeps the session, on your own computer."}},
     {"@type": "Question", "name": "Can it submit work or change anything in Brightspace?", "acceptedAnswer": {"@type": "Answer", "text": "No. Every tool is read-only and only ever sends read requests to Brightspace."}},
     {"@type": "Question", "name": "Which AI apps does it work with?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Desktop, Claude Code, ChatGPT, Cursor, VS Code with GitHub Copilot, Windsurf, Codex, Gemini CLI, Cline, Zed, LM Studio and any other app that supports MCP."}},
+    {"@type": "Question", "name": "How do I use Brightspace with Claude?", "acceptedAnswer": {"@type": "Answer", "text": "Run npx brightspace-d2l-mcp setup and it adds Brightspace to Claude Desktop and Claude Code for you."}},
+    {"@type": "Question", "name": "Does it work with ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, through ChatGPT developer mode and the server's HTTP mode."}},
     {"@type": "Question", "name": "Does it cost anything?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is free and open source under the MIT license."}}
   ]
 }
@@ -141,7 +144,7 @@ footer a { color: var(--muted); }
 <div class="wrap">
   <header class="top">
     <a class="brand" href="/"><span class="brand-mark"><svg width="18" height="18" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 33l11 11 25-27" stroke="#ff6a3d" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Brightspace MCP</a>
-    <nav><a href="#features">Features</a><a href="#setup">Setup</a><a href="#faq">FAQ</a><a class="gh" href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a></nav>
+    <nav><a href="#features">Features</a><a href="/claude/">Claude</a><a href="/chatgpt/">ChatGPT</a><a href="/compare/">Compare</a><a class="gh" href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a></nav>
   </header>
 
   <main>
@@ -154,6 +157,7 @@ footer a { color: var(--muted); }
         <a class="btn primary" href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp/blob/main/docs/setup.md">Step-by-step guide</a>
       </div>
       <p class="note">Needs Node.js 20+ and Chrome or Edge. Works at any Brightspace school. Read-only, and no password is stored.</p>
+      <div class="figure"><img src="demo.gif" alt="Asking an AI what to work on and getting a Brightspace to-do list that skips submitted work (sample data)" width="800" height="420"></div>
     </div>
 
     <section id="features">
@@ -202,12 +206,21 @@ footer a { color: var(--muted); }
       <div class="figure"><img src="how-it-works.svg" alt="Your AI app talks to this server on your computer, which reads Brightspace with your own sign-in" width="860" height="300" loading="lazy"></div>
     </section>
 
+    <section id="compare">
+      <h2>How it compares</h2>
+      <p class="sub">17 tools, a real to-do list that skips submitted work, a target grade calculator, exam dates and calendar export. Setup connects 13 AI apps automatically.</p>
+      <a class="btn" href="/compare/">See the full comparison</a>
+    </section>
+
     <section id="faq">
       <h2>FAQ</h2>
       <details open><summary>Does it work at my school?</summary><p>If your school uses D2L Brightspace, yes. Setup opens a normal browser window so any sign-in works, including Microsoft, Duo, Okta and Shibboleth. It has been tested at one college so far.</p></details>
       <details><summary>Is my password saved?</summary><p>No. You type your password into your school's own sign-in page in a real browser. The tool only keeps the session, on your own computer.</p></details>
       <details><summary>Can it submit work or change anything?</summary><p>No. Every tool is read-only and only ever reads from Brightspace. A test in the code fails if that ever changes.</p></details>
       <details><summary>Where does my data go?</summary><p>Nowhere except your own AI app. It runs on your computer and talks only to your school's Brightspace, with no server in between and no analytics.</p></details>
+      <details><summary>How do I use Brightspace with Claude?</summary><p>Run <code>npx brightspace-d2l-mcp setup</code> and it adds Brightspace to Claude Desktop and Claude Code for you. See the <a href="/claude/">Claude guide</a>.</p></details>
+      <details><summary>Does it work with ChatGPT?</summary><p>Yes, through ChatGPT developer mode and HTTP mode. See the <a href="/chatgpt/">ChatGPT guide</a>.</p></details>
+      <details><summary>How is this different from other Brightspace MCP servers?</summary><p>It has more tools, a ranked to-do list that checks your real submissions, a target grade calculator, exam and calendar events, and it connects 13 AI apps automatically. See the <a href="/compare/">comparison</a>.</p></details>
       <details><summary>Does it cost anything?</summary><p>No. It's free and open source under the MIT license.</p></details>
       <details><summary>Something isn't working</summary><p>Run <code>npx brightspace-d2l-mcp doctor</code>. It checks everything and tells you how to fix it. Or <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp/issues">open an issue</a>.</p></details>
     </section>
@@ -217,7 +230,8 @@ footer a { color: var(--muted); }
     <p>Brightspace D2L MCP Server, built by AnonymousOnyx22, a student developer. Not affiliated with D2L.
     · <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a>
     · <a href="https://www.npmjs.com/package/brightspace-d2l-mcp">npm</a>
-    · <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp/blob/main/docs/agents.md">Agent frameworks</a></p>
+    · <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp/blob/main/docs/agents.md">Agent frameworks</a>
+    · <a href="/claude/">Brightspace + Claude</a> · <a href="/chatgpt/">Brightspace + ChatGPT</a> · <a href="/compare/">Compare</a></p>
   </footer>
 </div>
 <script>
