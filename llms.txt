@@ -81,3 +81,4 @@ The password is never seen or stored because the user types it into the school's
 - [Pricing: 7-day free trial, then $4 CAD a month](https://brightspacemcp.com/pro/)
 - [Privacy policy](https://brightspacemcp.com/privacy/)
 - [Terms of use](https://brightspacemcp.com/terms/)
+- Finish setup on a laptop https://brightspacemcp.com/start/
