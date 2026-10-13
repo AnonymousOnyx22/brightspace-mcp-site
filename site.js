@@ -1,6 +1,24 @@
 (function () {
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Phones and tablets can't run the Claude desktop app, so pages swap in a
+  // "finish on your laptop" handoff for them.
+  var ua = navigator.userAgent;
+  var isPhone = /iPhone|iPad|iPod|Android/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  document.documentElement.classList.toggle("phone", isPhone);
+
+  document.querySelectorAll("[data-share]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var url = button.getAttribute("data-share");
+      var text = "Finish setting up Brightspace MCP on your laptop (takes about a minute):";
+      if (navigator.share) {
+        navigator.share({ title: "Brightspace MCP setup", text: text, url: url }).catch(function () {});
+      } else {
+        location.href = "mailto:?subject=" + encodeURIComponent("Brightspace MCP setup") + "&body=" + encodeURIComponent(text + "\n" + url);
+      }
+    });
+  });
+
   // Scroll reveals. Elements animate in when they enter the viewport and
   // reset once fully out of view, so they replay when scrolled back to.
   var els = document.querySelectorAll(".reveal, .wipe");

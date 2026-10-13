@@ -82,7 +82,7 @@ function page(title, body, status = 200) {
 <meta name="robots" content="noindex">
 <title>${esc(title)}</title>
 <link rel="stylesheet" href="/styles.css">
-<script>document.documentElement.classList.add("js")</script>
+<script>document.documentElement.classList.add("js");if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)||(/Macintosh/.test(navigator.userAgent)&&navigator.maxTouchPoints>1))document.documentElement.classList.add("phone")</script>
 </head>
 <body>
 <div class="wrap page">
@@ -146,6 +146,15 @@ export async function activatePage(req) {
   return page("You're in", `
     <div class="hero">
       <p class="eyebrow enter" style="--i:0">Your 7-day free trial has started</p>
+      <div class="only-phone">
+        <h1 class="enter" style="--i:1">You're in. Finish on your laptop.</h1>
+        <p class="lede enter" style="--i:2">Brightspace MCP works in the Claude app on your Mac or Windows laptop. Send yourself the setup link, then open it on your laptop. It takes about a minute.</p>
+        <div class="cta-row enter" style="--i:3"><button class="btn primary" type="button" data-share="${publicUrl()}/start/#k=${esc(key)}">Send to my laptop</button></div>
+        <p class="note">Or, on your laptop, go to <b>brightspacemcp.com/start</b> and paste your key:</p>
+        <div class="cmd"><span>${esc(key)}</span><button class="copy" type="button" data-copy="${esc(key)}"><span>Copy</span></button></div>
+        <p class="note">Nothing is charged for 7 days.</p>
+      </div>
+      <div class="only-laptop">
       <h1 class="enter" style="--i:1">Add it to Claude in one click.</h1>
       <p class="lede enter" style="--i:2">Works in the Claude app on Mac and Windows. No Terminal, nothing else to install. Don't have Claude yet? <a href="https://claude.ai/download" rel="noopener">Get the free app</a> first.</p>
       <div class="setup enter" style="--i:3">
@@ -181,6 +190,7 @@ export async function activatePage(req) {
           </div>
         </div>
       </details>
+      </div>
       <form method="POST" action="/api/manage" style="margin-top:24px"><input type="hidden" name="key" value="${esc(key)}"><button class="btn" type="submit">Manage or cancel subscription</button></form>
     </div>`);
 }

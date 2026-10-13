@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finish setup | Brightspace MCP</title>
+<meta name="description" content="Finish setting up Brightspace MCP on your laptop.">
+<link rel="canonical" href="https://brightspacemcp.com/start/">
+<meta name="theme-color" content="#0b1020">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Finish setup | Brightspace MCP">
+<meta property="og:description" content="Finish setting up Brightspace MCP on your laptop.">
+<meta property="og:url" content="https://brightspacemcp.com/start/">
+<meta property="og:image" content="https://brightspacemcp.com/og.png">
+<meta property="og:site_name" content="Brightspace D2L MCP Server">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1020'/%3E%3Cpath d='M18 33l9 9 19-21' stroke='%23ff6a3d' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/styles.css">
+<script>document.documentElement.classList.add("js");if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)||(/Macintosh/.test(navigator.userAgent)&&navigator.maxTouchPoints>1))document.documentElement.classList.add("phone")</script>
+</head>
+<body>
+<div class="wrap page">
+  <header class="top">
+    <a class="brand" href="/"><span class="brand-mark"><svg width="18" height="18" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 33l11 11 25-27" stroke="#ff6a3d" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Brightspace MCP</a>
+    <nav><a href="/claude/">Claude</a><a href="/chatgpt/">ChatGPT</a><a href="/compare/">Compare</a><a href="/pro/">Pricing</a><a class="gh" href="/pro/">Start free trial</a></nav>
+  </header>
+  <p class="crumbs"><a href="/">Home</a> / Finish setup</p>
+  <main>
+    <div class="hero">
+      <p class="eyebrow">Finish setup</p>
+      <h1>Add Brightspace MCP to Claude.</h1>
+      <div class="only-phone"><p class="lede">Open this page on your Mac or Windows laptop. Brightspace MCP works in the Claude app there.</p></div>
+      <form id="keyform" class="waitlist" style="margin-top:8px">
+        <label>Your key<input id="key" name="key" required placeholder="bmp_..." autocomplete="off" spellcheck="false"></label>
+        <button class="btn primary" type="submit">Continue</button>
+      </form>
+      <p class="note">Your key is on the page you saw after checkout. No key yet? <a href="/pro/">Start a 7-day free trial</a>.</p>
+      <div id="steps" hidden>
+        <div class="setup" style="margin-top:20px">
+          <ol class="mini">
+            <li>Click <b>Add to Claude</b> and open the file. Claude shows an <b>Install</b> screen. Don't have Claude? <a href="https://claude.ai/download" rel="noopener">Get the free app</a>.</li>
+            <li>Paste your key and your school's Brightspace address (like <code>yourschool.brightspace.com</code>), then click <b>Install</b>.</li>
+            <li>Ask Claude <i>"What should I work on right now?"</i> A window opens once so you can sign in to Brightspace.</li>
+          </ol>
+          <div class="cta-row"><a class="btn primary" href="/pro/brightspace-mcp-pro.mcpb" download>Add to Claude</a></div>
+          <p class="note" style="margin-top:16px">Your key:</p>
+          <div class="cmd"><span id="keytext"></span><button class="copy" type="button" id="keycopy" data-copy=""><span>Copy</span></button></div>
+        </div>
+        <details style="margin-top:20px"><summary>Using Cursor, VS Code or another AI app?</summary>
+          <p class="note">Mac or Linux: open Terminal, paste this and press Enter.</p>
+          <div class="cmd"><span class="p">$</span><span id="maccmd"></span><button class="copy" type="button" id="maccopy" data-copy=""><span>Copy</span></button></div>
+          <p class="note">Windows: <a href="/brightspace-setup.cmd" download>download the setup file</a>, double-click it and paste your key when it asks.</p>
+        </details>
+      </div>
+    </div>
+<script>
+(function () {
+  var pattern = /^bmp_[A-Za-z0-9]+_[A-Za-z0-9_-]{16,}$/;
+  function show(key) {
+    document.getElementById("keyform").hidden = true;
+    document.getElementById("steps").hidden = false;
+    document.getElementById("keytext").textContent = key;
+    document.getElementById("keycopy").setAttribute("data-copy", key);
+    var cmd = "curl -fsSL https://brightspacemcp.com/install.sh | bash -s -- " + key;
+    document.getElementById("maccmd").textContent = cmd;
+    document.getElementById("maccopy").setAttribute("data-copy", cmd);
+  }
+  var fromLink = decodeURIComponent((location.hash.match(/k=([^&]+)/) || [])[1] || "");
+  if (pattern.test(fromLink)) show(fromLink);
+  document.getElementById("keyform").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var key = document.getElementById("key").value.trim();
+    if (!pattern.test(key)) { document.getElementById("key").setCustomValidity("That doesn't look like a key. It starts with bmp_"); document.getElementById("key").reportValidity(); return; }
+    history.replaceState(null, "", "#k=" + key);
+    show(key);
+  });
+  document.getElementById("key").addEventListener("input", function () { this.setCustomValidity(""); });
+})();
+</script>
+  </main>
+  <footer>
+    <p>Brightspace D2L MCP Server, built by AnonymousOnyx22, a student developer. Not affiliated with D2L.
+    · <a href="/">Home</a> · <a href="/pro/">Pricing</a> · <a href="/compare/">Compare</a>
+    · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></p>
+  </footer>
+</div>
+<script src="/site.js" defer></script>
+</body>
+</html>
