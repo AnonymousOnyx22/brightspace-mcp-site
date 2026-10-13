@@ -28,7 +28,7 @@
   <main>
     <div class="hero">
       <h1>Privacy policy</h1>
-      <p class="lede">Short version: the free version never sends your school data to us. Pro stores only what it needs to sign you in, and never sells anything.</p>
+      <p class="lede">Short version: neither the free version nor Pro sends your school data to us, and we never sell anything.</p>
       <p class="note">Last updated October 13, 2026</p>
     </div>
     <section class="legal">
@@ -43,29 +43,26 @@
       <h2>This website</h2>
       <p>The site is hosted by Netlify, which keeps standard server logs such as IP address, browser type and the pages requested. We don't use advertising trackers or sell any data. If you join the Pro waitlist, we collect your email address and school name, and use them only to tell you when Pro is available. Ask us to delete them anytime.</p>
 
-      <h2>Pro (hosted version)</h2>
-      <p>Pro runs on our server so you don't have to install anything. When you use it:</p>
+      <h2>Pro</h2>
+      <p>Pro runs on your own computer, just like the free version. It signs in the same way, keeps your session on your computer, and checks Brightspace from there. Your grades, courses and sign-in never reach us.</p>
       <ul>
-        <li><b>Sign-in token.</b> When you sign in with Brightspace, your school gives the app an access token. We store it encrypted and use it only to read your Brightspace data when you ask a question. We never see or store your password.</li>
-        <li><b>Your course data.</b> Grades, assignments and course content are fetched when your AI app asks for them and passed straight back to it. We don't keep copies.</li>
-        <li><b>Account details.</b> Your email address and your school, so we can run your account and contact you about it.</li>
-        <li><b>Payments.</b> Payments are processed by Stripe. We never see or store your full card number. Stripe's privacy policy covers the payment details they handle.</li>
-        <li><b>Logs.</b> Basic technical logs (time, request type, errors) to keep the service working and secure. They don't include your grades or course content. They're kept for up to 30 days.</li>
+        <li><b>Payments.</b> Stripe processes payments and holds your billing details, such as your email address and card. We never see or store your full card number. Stripe's privacy policy covers what they handle.</li>
+        <li><b>License checks.</b> About twice a day, Pro sends your license key to brightspacemcp.com so we can ask Stripe whether your subscription is active. The key is the only thing sent. We don't store it.</li>
+        <li><b>Notifications and calendar.</b> Alerts are shown by your computer, and the calendar feed is served only to your own computer.</li>
       </ul>
-      <p>Pro data is stored on servers in Canada.</p>
 
       <h2>Your choices</h2>
       <ul>
-        <li>Disconnect Pro at any time. Your stored token is deleted right away.</li>
+        <li>Remove Pro from your computer at any time with <code>npx brightspace-d2l-mcp pro deactivate</code>.</li>
         <li>Cancel your subscription at any time from the billing page.</li>
         <li>Ask us for a copy of your data, to correct it, or to delete your account and everything linked to it. We'll do it within 30 days.</li>
       </ul>
 
       <h2>Sharing</h2>
-      <p>We don't sell or rent personal information. We share it only with the services needed to run the project (Netlify for hosting, Stripe for payments, and our server provider), or when required by law.</p>
+      <p>We don't sell or rent personal information. We share it only with the services needed to run the project (Netlify for hosting and Stripe for payments), or when required by law.</p>
 
       <h2>Security</h2>
-      <p>Tokens are encrypted at rest, all traffic uses HTTPS, and the app can only read from Brightspace, never write. No system is perfectly secure, but if a breach ever affects your information we'll tell you and the authorities as the law requires.</p>
+      <p>All traffic uses HTTPS, your Brightspace session stays on your own computer, and the app can only read from Brightspace, never write. No system is perfectly secure, but if a breach ever affects your information we'll tell you and the authorities as the law requires.</p>
 
       <h2>Children</h2>
       <p>The project is meant for college and university students. It isn't directed at children under 13.</p>

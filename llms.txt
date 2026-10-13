@@ -79,6 +79,6 @@ The password is never seen or stored because the user types it into the school's
 - [Connect Brightspace to Claude](https://brightspacemcp.com/claude/)
 - [Use Brightspace with ChatGPT](https://brightspacemcp.com/chatgpt/)
 - [Brightspace MCP servers compared](https://brightspacemcp.com/compare/)
-- [Pro: hosted version, coming soon](https://brightspacemcp.com/pro/)
+- [Pro: deadline, grade and daily alerts](https://brightspacemcp.com/pro/)
 - [Privacy policy](https://brightspacemcp.com/privacy/)
 - [Terms of use](https://brightspacemcp.com/terms/)
