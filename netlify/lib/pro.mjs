@@ -159,7 +159,7 @@ export async function activatePage(req) {
       <p class="lede enter" style="--i:2">Works in the Claude app on Mac and Windows. No Terminal, nothing else to install. Don't have Claude yet? <a href="https://claude.ai/download" rel="noopener">Get the free app</a> first.</p>
       <div class="setup enter" style="--i:3">
         <ol class="mini">
-          <li>Click <b>Add to Claude</b> below and open the file. Claude shows an <b>Install</b> screen.</li>
+          <li>Click <b>Add to Claude</b> below. Your browser downloads a small file.</li><li><b>Open the downloaded file</b> (click it in your browser\'s downloads, top right). Claude opens and shows an <b>Install</b> screen.</li>
           <li>Paste your key and your school's Brightspace address (copy it from your browser, like <code>yourschool.brightspace.com</code>), then click <b>Install</b>.</li>
           <li>Ask Claude <i>"What should I work on right now?"</i> A window opens once so you can sign in to Brightspace.</li>
         </ol>
