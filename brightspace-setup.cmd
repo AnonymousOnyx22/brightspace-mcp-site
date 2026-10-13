@@ -13,6 +13,6 @@ if errorlevel 1 (
   pause
   exit /b 1
 )
-call npx -y brightspace-d2l-mcp@latest setup
+call npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup
 echo.
 pause

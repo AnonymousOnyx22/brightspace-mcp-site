@@ -194,3 +194,5 @@ details[open] summary::after { transform: rotate(45deg); }
   .flow { grid-template-columns: 1fr; }
 }
 .top-bar .top { padding: 14px 16px; }
+form.inline { display: contents; }
+button.btn { font: inherit; font-weight: 600; cursor: pointer; }

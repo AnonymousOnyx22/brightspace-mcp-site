@@ -41,6 +41,8 @@ test("checkout creates a subscription session and redirects to Stripe", async ()
   assert.equal(body.get("mode"), "subscription");
   assert.equal(body.get("line_items[0][price]"), "price_123");
   assert.equal(body.get("success_url"), "https://brightspacemcp.com/pro/activate?session_id={CHECKOUT_SESSION_ID}");
+  assert.equal(body.get("subscription_data[trial_period_days]"), "7");
+  assert.equal(body.get("payment_method_collection"), "always");
 });
 
 test("activation page shows the key only for a completed payment", async () => {
@@ -49,7 +51,8 @@ test("activation page shows the key only for a completed payment", async () => {
   const ok = await handler(new Request("https://brightspacemcp.com/pro/activate?session_id=cs_done"));
   assert.equal(ok.status, 200);
   const html = await ok.text();
-  assert.ok(html.includes(`pro activate ${licenseKeyFor("sub_9Zz")}`));
+  assert.ok(html.includes(`install.sh | bash -s -- ${licenseKeyFor("sub_9Zz")}`));
+  assert.ok(html.includes("/pro/setup.cmd?session_id=cs_done"));
   assert.equal((await handler(new Request("https://brightspacemcp.com/pro/activate?session_id=cs_open"))).status, 402);
   assert.equal((await handler(new Request("https://brightspacemcp.com/pro/activate?session_id=<script>"))).status, 400);
 });
@@ -78,4 +81,15 @@ test("manage opens the Stripe billing portal for a valid key", async () => {
 
 test("only POST is accepted on the API", async () => {
   assert.equal((await handler(new Request("https://brightspacemcp.com/api/license"))).status, 405);
+});
+
+test("the Windows setup file carries the key, only after checkout", async () => {
+  stripe.responses["GET checkout/sessions/cs_done"] = [200, { status: "complete", subscription: "sub_9Zz" }];
+  const res = await handler(new Request("https://brightspacemcp.com/pro/setup.cmd?session_id=cs_done"));
+  assert.equal(res.status, 200);
+  assert.match(res.headers.get("content-disposition"), /brightspace-setup\.cmd/);
+  const text = await res.text();
+  assert.ok(text.includes(`setup --key ${licenseKeyFor("sub_9Zz")}\r\n`));
+  assert.ok(text.startsWith("@echo off\r\n"));
+  assert.equal((await handler(new Request("https://brightspacemcp.com/pro/setup.cmd?session_id=cs_nope"))).status, 404);
 });
