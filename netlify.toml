@@ -28,3 +28,10 @@
   for = "/demo.gif"
   [headers.values]
     Cache-Control = "public, max-age=86400"
+
+# Old Netlify address now permanently redirects to the custom domain.
+[[redirects]]
+  from = "https://brightspace-mcp.netlify.app/*"
+  to = "https://brightspacemcp.com/:splat"
+  status = 301
+  force = true
