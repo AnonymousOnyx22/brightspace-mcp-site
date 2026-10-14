@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="msvalidate.01" content="C993C6F3C372BD700CDE90CDB53BAEFC" />
 <title>Brightspace MCP Server for D2L: Connect Brightspace to Claude and ChatGPT</title>
-<meta name="description" content="Brightspace MCP connects D2L Brightspace to Claude, ChatGPT, Cursor and Copilot. Ask what's due, what you already submitted, your grades and exam dates, and get deadline and grade alerts. 7-day free trial, then $4 CAD a month.">
+<meta name="description" content="Brightspace MCP connects D2L Brightspace to Claude, ChatGPT, Cursor and Copilot. Ask what's due, what you already submitted, your grades and exam dates, and get a target-grade calculator and calendar export. Free and open source.">
 <meta name="keywords" content="brightspace mcp, d2l mcp, brightspace ai, d2l brightspace chatgpt, brightspace claude, d2l ai assistant, brightspace mcp server, d2l mcp server">
 <link rel="canonical" href="https://brightspacemcp.com/">
 <meta name="theme-color" content="#0b1020">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Brightspace D2L MCP Server: your courses in Claude, ChatGPT and Cursor">
-<meta property="og:description" content="Ask your AI what's actually left to do. It checks what you already handed in, and alerts you before deadlines. 7-day free trial.">
+<meta property="og:description" content="Ask your AI what's actually left to do. It checks what you already handed in, and alerts you before deadlines. free and open source.">
 <meta property="og:url" content="https://brightspacemcp.com/">
 <meta property="og:image" content="https://brightspacemcp.com/og.png">
 <meta property="og:site_name" content="Brightspace MCP">
@@ -21,7 +21,7 @@
 <meta property="og:image:alt" content="Brightspace D2L MCP Server. Ask your AI what's actually left to do.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Brightspace D2L MCP Server: your courses in Claude, ChatGPT and Cursor">
-<meta name="twitter:description" content="Ask your AI what's actually left to do. It checks what you already handed in, and alerts you before deadlines. 7-day free trial.">
+<meta name="twitter:description" content="Ask your AI what's actually left to do. It checks what you already handed in, and alerts you before deadlines. free and open source.">
 <meta name="twitter:image" content="https://brightspacemcp.com/og.png">
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="author" content="AnonymousOnyx22">
@@ -60,14 +60,14 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "Brightspace MCP",
-  "alternateName": ["Brightspace MCP Pro", "D2L MCP", "Brightspace MCP"],
+  "alternateName": ["D2L MCP", "Brightspace D2L MCP Server", "Brightspace MCP"],
   "applicationCategory": "EducationalApplication",
   "operatingSystem": "Windows, macOS, Linux",
   "description": "MCP server that connects D2L Brightspace to Claude, ChatGPT, Cursor, Copilot and other AI apps. Due dates with real submission status, grades, target-grade calculator, exam and calendar events, and course content.",
   "url": "https://brightspacemcp.com/",
-  "offers": { "@type": "Offer", "price": "4.00", "priceCurrency": "CAD", "description": "Monthly subscription with a 7-day free trial" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free and open source" },
   "softwareVersion": "1.0.0",
-  "isAccessibleForFree": false,
+  "isAccessibleForFree": true,
   "image": "https://brightspacemcp.com/og.png",
   "screenshot": "https://brightspacemcp.com/demo.gif",
   "featureList": [
@@ -92,9 +92,9 @@
     {"@type": "Question", "name": "Is my password saved?", "acceptedAnswer": {"@type": "Answer", "text": "No. You type your password into your school's own sign-in page in a real browser. The tool only keeps the session, on your own computer."}},
     {"@type": "Question", "name": "Can it submit work or change anything in Brightspace?", "acceptedAnswer": {"@type": "Answer", "text": "No. Every tool is read-only and only ever sends read requests to Brightspace."}},
     {"@type": "Question", "name": "Which AI apps does it work with?", "acceptedAnswer": {"@type": "Answer", "text": "Claude Desktop, Claude Code, ChatGPT, Cursor, VS Code with GitHub Copilot, Windsurf, Codex, Gemini CLI, Cline, Zed, LM Studio and any other app that supports MCP."}},
-    {"@type": "Question", "name": "How do I use Brightspace with Claude?", "acceptedAnswer": {"@type": "Answer", "text": "Run npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup and it adds Brightspace to Claude Desktop and Claude Code for you."}},
+    {"@type": "Question", "name": "How do I use Brightspace with Claude?", "acceptedAnswer": {"@type": "Answer", "text": "Run npx -y brightspace-d2l-mcp setup and it adds Brightspace to Claude Desktop and Claude Code for you."}},
     {"@type": "Question", "name": "Does it work with ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, through ChatGPT developer mode and the server's HTTP mode."}},
-    {"@type": "Question", "name": "Does it cost anything?", "acceptedAnswer": {"@type": "Answer", "text": "There is a 7-day free trial, then it is $4 CAD a month. Cancel anytime."}}
+    {"@type": "Question", "name": "Does it cost anything?", "acceptedAnswer": {"@type": "Answer", "text": "No. It is free and open source, with no account and no subscription."}}
   ]
 }
 </script>
@@ -106,7 +106,7 @@
 <header class="top-bar">
   <div class="wrap top">
     <a class="brand" href="/"><span class="brand-mark"><svg width="18" height="18" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 33l11 11 25-27" stroke="#ff6a3d" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Brightspace MCP</a>
-    <nav><a href="#how">How it works</a><a href="#features">Features</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a class="gh" href="#setup">Get started</a></nav>
+    <nav><a href="#how">How it works</a><a href="#features">Features</a><a href="/more-mcps/">More MCPs</a><a href="#faq">FAQ</a><a class="gh" href="#setup">Get started</a></nav>
   </div>
 </header>
 
@@ -114,15 +114,15 @@
   <main>
     <div class="hero hero-split">
       <div class="hero-copy">
-        <p class="eyebrow enter" style="--i:0">7-day free trial · Claude, ChatGPT, Cursor, Copilot</p>
+        <p class="eyebrow enter" style="--i:0">Free and open source · Claude, ChatGPT, Cursor, Copilot</p>
         <h1 class="enter" style="--i:1">Brightspace MCP: ask your AI what's <span class="hl">actually</span> left to do.</h1>
-        <p class="lede enter" style="--i:2">Connect D2L Brightspace to your AI app. It checks what you already handed in, so you only see the work that's really left, and it alerts you before deadlines and when grades are posted.</p>
+        <p class="lede enter" style="--i:2">Connect D2L Brightspace to your AI app. It checks what you already handed in, so you only see the work that's really left, and it gives you a to-do list, deadlines and a target-grade calculator.</p>
         <div class="enter cta-row" style="--i:3">
-          <form method="POST" action="/api/checkout" class="inline"><button class="btn primary" type="submit">Start 7-day free trial</button></form>
+          <a class="btn primary" href="/#setup">Get it free</a>
           <a class="btn" href="#how">See how it works</a>
         </div>
         <ul class="trust enter" style="--i:4">
-          <li>7 days free, then $4 CAD/month</li><li>Works in Claude on your laptop</li><li>Cancel anytime</li><li>No password stored</li><li>Any Brightspace school</li>
+          <li>Free, open source</li><li>Works in Claude on your laptop</li><li>No account</li><li>No password stored</li><li>Any Brightspace school</li>
         </ul>
       </div>
       <div class="hero-art enter" style="--i:2">
@@ -156,8 +156,8 @@
       <h2 class="reveal">Three steps, about a minute</h2>
       <p class="sub reveal">No API keys and nothing to configure by hand.</p>
       <ol class="flow">
-        <li class="reveal" style="--i:0"><span class="num">1</span><h3>Start your free trial</h3><p>7 days free. You get a key right after checkout.</p></li>
-        <li class="reveal" style="--i:1"><span class="num">2</span><h3>Add it to Claude</h3><p>One click in the Claude app on Mac or Windows. Paste your key, and sign in to Brightspace once.</p></li>
+        <li class="reveal" style="--i:0"><span class="num">1</span><h3>Run one command</h3><p>Free. It asks for your school and connects every AI app it finds.</p></li>
+        <li class="reveal" style="--i:1"><span class="num">2</span><h3>Sign in once</h3><p>A normal browser window opens so you can sign in to your school. Your password is never stored.</p></li>
         <li class="reveal" style="--i:2"><span class="num">3</span><h3>Ask your AI</h3><p>Setup connects every AI app it finds. Ask "What's due this week?"</p></li>
       </ol>
     </section>
@@ -166,11 +166,11 @@
       <p class="eyebrow reveal">Get started</p>
       <h2 class="reveal">Set it up</h2>
       <div class="plan plan-pro reveal" style="max-width:760px;margin-bottom:18px">
-        <h3>Claude app (easiest)</h3>
-        <p class="note" style="margin:6px 0 14px">One click on Mac or Windows. No Terminal. After checkout, click <b>Add to Claude</b>, drag the file into the Claude app and click Install. Your key is already filled in.</p>
-        <div class="cta-row"><form method="POST" action="/api/checkout" class="inline"><button class="btn primary" type="submit">Start 7-day free trial</button></form><a class="btn" href="/pro/brightspace-mcp-pro.mcpb" download>Already have a key? Add to Claude</a></div>
+        <h3>One command, any AI app</h3>
+        <p class="note" style="margin:6px 0 14px">Needs Node.js 20 or newer. Open a terminal and run this. It asks for your school, opens a sign-in window and connects Claude, Cursor and the other apps it finds.</p>
+        <div class="cmd"><span class="p">$</span><span>npx brightspace-d2l-mcp setup</span><button class="copy" type="button" data-copy="npx brightspace-d2l-mcp setup"><span>Copy</span></button></div>
       </div>
-      <p class="sub reveal">Using Cursor, VS Code, Windsurf or another AI app? Pick your computer:</p>
+      <p class="sub reveal">Prefer a download? Pick your computer. Using Cursor, VS Code, Windsurf or another AI app? Pick your computer:</p>
       <div class="setup reveal" data-setup>
         <div class="tabs" role="tablist" aria-label="Your computer">
           <button role="tab" type="button" data-os="win" aria-selected="true">Windows</button>
@@ -179,30 +179,30 @@
         </div>
         <div class="panel" data-panel="win">
           <ol class="mini">
-            <li>Download the setup file and double-click it. Paste your key when it asks. If Node.js isn't installed, it opens the installer first: click through it, then run the setup file again.</li>
+            <li>Download the setup file and double-click it. If Node.js isn't installed, it opens the installer first: click through it, then run the setup file again.</li>
             <li>If Windows shows "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>. The file only runs the setup command below.</li>
             <li>Sign in to Brightspace in the window that opens. Done.</li>
           </ol>
           <div class="cta-row"><a class="btn primary" href="/brightspace-setup.cmd" download>Download setup for Windows</a></div>
           <p class="note">Prefer typing it? Open <b>PowerShell</b> and run:</p>
-          <div class="cmd"><span class="p">&gt;</span><span>npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup</span><button class="copy" type="button" data-copy="npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup"><span>Copy</span></button></div>
+          <div class="cmd"><span class="p">&gt;</span><span>npx -y brightspace-d2l-mcp setup</span><button class="copy" type="button" data-copy="npx -y brightspace-d2l-mcp setup"><span>Copy</span></button></div>
         </div>
         <div class="panel" data-panel="mac" hidden>
           <ol class="mini">
             <li>Tap <b>Copy</b> below.</li>
             <li>Open <b>Terminal</b>: press <kbd>⌘</kbd> <kbd>Space</kbd>, type "Terminal", press Enter.</li>
-            <li>Paste with <kbd>⌘</kbd> <kbd>V</kbd>, press Enter, paste your key when it asks, and sign in to Brightspace. Everything else installs by itself.</li>
+            <li>Paste with <kbd>⌘</kbd> <kbd>V</kbd>, press Enter, and sign in to Brightspace. Everything else installs by itself.</li>
           </ol>
           <div class="cmd big"><span class="p">$</span><span>curl -fsSL https://brightspacemcp.com/install.sh | bash</span><button class="copy" type="button" data-copy="curl -fsSL https://brightspacemcp.com/install.sh | bash"><span>Copy</span></button></div>
         </div>
         <div class="panel" data-panel="linux" hidden>
           <ol class="mini">
             <li>Open a terminal.</li>
-            <li>Copy this command, paste it and press Enter. Paste your key when it asks, then sign in to Brightspace.</li>
+            <li>Copy this command, paste it and press Enter. Then sign in to Brightspace.</li>
           </ol>
           <div class="cmd big"><span class="p">$</span><span>curl -fsSL https://brightspacemcp.com/install.sh | bash</span><button class="copy" type="button" data-copy="curl -fsSL https://brightspacemcp.com/install.sh | bash"><span>Copy</span></button></div>
         </div>
-        <p class="note">Stuck? Run <code>npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz doctor</code> and it tells you what to fix. Guides for <a href="/claude/">Claude</a> and <a href="/chatgpt/">ChatGPT</a>, or the <a href="/contact/">contact form</a>.</p>
+        <p class="note">Stuck? Run <code>npx -y brightspace-d2l-mcp doctor</code> and it tells you what to fix. Guides for <a href="/claude/">Claude</a> and <a href="/chatgpt/">ChatGPT</a>, or the <a href="/contact/">contact form</a>.</p>
       </div>
     </section>
 
@@ -215,7 +215,7 @@
     <section id="features">
       <p class="eyebrow reveal">Features</p>
       <h2 class="reveal">What you can ask</h2>
-      <p class="sub reveal">17 read-only tools turn Brightspace into something your AI can actually read, plus alerts on your computer.</p>
+      <p class="sub reveal">17 read-only tools turn Brightspace into something your AI can actually read.</p>
       <div class="grid">
         <div class="card reveal" style="--i:0"><h3>✅ What's left</h3><p class="ask">"What should I work on right now?"</p><p>A to-do list ranked by due date that skips everything you've already submitted.</p></div>
         <div class="card reveal" style="--i:1"><h3>📅 Deadlines</h3><p class="ask">"What's due this week?"</p><p>Every assignment and quiz across all your courses, with its real status.</p></div>
@@ -249,22 +249,15 @@
     </section>
 
     <section id="pricing">
-      <p class="eyebrow reveal">Pricing</p>
-      <h2 class="reveal">One plan, everything included</h2>
-      <div class="plans">
-        <div class="plan plan-pro reveal" style="--i:0">
-          <h3>Brightspace MCP</h3>
-          <p class="price">$4 <small>CAD / month</small></p>
-          <p class="note" style="margin:-6px 0 14px">7 days free, then billed monthly. Cancel anytime.</p>
-          <ul><li>All 17 tools in Claude, ChatGPT, Cursor, Copilot and more</li><li>To-do list that skips work you've handed in</li><li>Deadline alerts 24 hours and 2 hours before</li><li>Daily digest and grade alerts</li><li>Live calendar for Apple Calendar and Outlook</li></ul>
-          <form method="POST" action="/api/checkout" class="inline"><button class="btn primary" type="submit">Start 7-day free trial</button></form>
-        </div>
-      </div>
+      <p class="eyebrow reveal">Price</p>
+      <h2 class="reveal">Free. Open source. No account.</h2>
+      <p class="sub reveal">Every tool is free to use and the code is public on <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">GitHub</a>. If it saves you a late night, a star on the repo helps other students find it.</p>
+      <div class="cta-row"><a class="btn primary" href="#setup">Get it free</a><a class="btn" href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp">View on GitHub</a><a class="btn" href="/more-mcps/">More student MCPs</a></div>
     </section>
 
     <section id="compare">
       <h2 class="reveal">How it compares</h2>
-      <p class="sub reveal">17 tools, a real to-do list that skips submitted work, a target grade calculator, exam dates, deadline and grade alerts and a live calendar. Setup connects 13 AI apps automatically.</p>
+      <p class="sub reveal">17 tools, a real to-do list that skips submitted work, a target grade calculator, exam dates, a calendar export. Setup connects 13 AI apps automatically.</p>
       <a class="btn reveal" href="/compare/">See the full comparison</a>
     </section>
 
@@ -273,26 +266,26 @@
       <div class="faq">
       <details class="reveal" style="--i:0"><summary>What is Brightspace MCP?</summary><p>A D2L Brightspace MCP server: it connects Brightspace to AI apps like Claude and ChatGPT using MCP (Model Context Protocol), so they can read your due dates, submissions, grades and course files. <a href="/brightspace-mcp/">More about Brightspace MCP</a>.</p></details>
       <details class="reveal" style="--i:0" open><summary>Does it work at my school?</summary><p>If your school uses D2L Brightspace, yes. Setup opens a normal browser window so any sign-in works, including Microsoft, Duo, Okta and Shibboleth.</p></details>
-      <details class="reveal" style="--i:1"><summary>Does it work on my phone?</summary><p>You can sign up on your phone, but Brightspace MCP runs in the Claude app on your Mac or Windows laptop. After checkout on your phone, tap <b>Send to my laptop</b> and finish there in about a minute.</p></details>
+      <details class="reveal" style="--i:1"><summary>Does it work on my phone?</summary><p>Brightspace MCP runs on your Mac, Windows or Linux computer, inside your AI app. Open this page on your laptop to set it up.</p></details>
       <details class="reveal" style="--i:1"><summary>Is my password saved?</summary><p>No. You type your password into your school's own sign-in page in a real browser. The tool only keeps the session, on your own computer.</p></details>
       <details class="reveal" style="--i:2"><summary>Can it submit work or change anything?</summary><p>No. Every tool is read-only and only ever reads from Brightspace. A test in the code fails if that ever changes.</p></details>
-      <details class="reveal" style="--i:3"><summary>Where does my data go?</summary><p>Nowhere but your own computer and AI app. It talks only to your school's Brightspace, with no server in between and no analytics. Only your subscription key is checked with us. See the <a href="/privacy/">privacy policy</a>.</p></details>
+      <details class="reveal" style="--i:3"><summary>Where does my data go?</summary><p>Nowhere but your own computer and AI app. It talks only to your school's Brightspace, with no server in between and no analytics. See the <a href="/privacy/">privacy policy</a>.</p></details>
       <details class="reveal" style="--i:4"><summary>Are the setup files safe?</summary><p>Yes. The Windows file is a short text file you can open in Notepad, and the Mac installer is readable at <a href="/install.sh">brightspacemcp.com/install.sh</a>. Both only install Node.js into your user folder if it's missing, then run setup.</p></details>
-      <details class="reveal" style="--i:5"><summary>How do I add it to Claude?</summary><p>After checkout, click <b>Add to Claude</b>, open the file, paste your key and school address, and click Install. It works in the Claude app on Mac and Windows. ChatGPT works through developer mode, see the <a href="/chatgpt/">ChatGPT guide</a>.</p></details>
-      <details class="reveal" style="--i:6"><summary>Does it cost anything?</summary><p>The first 7 days are free. After that it's $4 CAD a month, and you can cancel anytime from the <a href="/pro/#manage">billing page</a>.</p></details>
-      <details class="reveal" style="--i:7"><summary>Something isn't working</summary><p>Run <code>npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz doctor</code>. It checks everything and tells you how to fix it. Or <a href="/contact/">contact us</a>.</p></details>
+      <details class="reveal" style="--i:5"><summary>How do I add it to Claude?</summary><p>Run <code>npx brightspace-d2l-mcp setup</code>. It adds Brightspace to Claude Desktop and Claude Code for you. ChatGPT works through developer mode, see the <a href="/chatgpt/">ChatGPT guide</a>.</p></details>
+      <details class="reveal" style="--i:6"><summary>Does it cost anything?</summary><p>No. It is free and open source, with no account, no key and no subscription.</p></details>
+      <details class="reveal" style="--i:7"><summary>Something isn't working</summary><p>Run <code>npx -y brightspace-d2l-mcp doctor</code>. It checks everything and tells you how to fix it. Or <a href="/contact/">contact us</a>.</p></details>
       </div>
     </section>
 
     <section class="final reveal">
       <h2>Stop getting told to do homework you already handed in.</h2>
-      <div class="cta-row center"><form method="POST" action="/api/checkout" class="inline"><button class="btn primary" type="submit">Start 7-day free trial</button></form><a class="btn" href="/pro/">What's included</a></div>
+      <div class="cta-row center"><a class="btn primary" href="/#setup">Get it free</a><a class="btn" href="/more-mcps/">More student MCPs</a></div>
     </section>
   </main>
 
   <footer>
     <p><a href="/brightspace-mcp/">What is Brightspace MCP?</a> · Brightspace D2L MCP Server, built by AnonymousOnyx22, a student developer. Not affiliated with D2L.
-    · <a href="/pro/">Pricing</a> · <a href="/compare/">Compare</a> · <a href="/claude/">Brightspace + Claude</a> · <a href="/chatgpt/">Brightspace + ChatGPT</a>
+    · <a href="/more-mcps/">More student MCPs</a> · <a href="/compare/">Compare</a> · <a href="/claude/">Brightspace + Claude</a> · <a href="/chatgpt/">Brightspace + ChatGPT</a>
     · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></p>
   </footer>
 </div>

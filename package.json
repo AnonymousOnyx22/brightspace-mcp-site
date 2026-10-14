@@ -2,10 +2,7 @@
   "name": "brightspacemcp-site",
   "private": true,
   "type": "module",
-  "description": "brightspacemcp.com: the marketing site plus the Pro checkout and license check (Netlify Functions).",
-  "scripts": {
-    "test": "node --test tests/*.test.mjs"
-  },
+  "description": "brightspacemcp.com: a free directory of open source student MCP servers.",
   "engines": {
     "node": ">=20"
   }

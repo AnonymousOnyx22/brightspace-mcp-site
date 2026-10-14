@@ -1,6 +1,6 @@
 # Brightspace D2L MCP Server
 
-> MCP server that gives AI assistants and agents read access to D2L Brightspace. It returns due dates with real submission status, grades, assignments, rubrics, course content, announcements, discussions and class lists. It works at any school that uses D2L Brightspace, including schools with Microsoft, Duo, Okta or Shibboleth sign-in. It is read only and never stores a password.
+> Free and open source MCP server that gives AI assistants and agents read access to D2L Brightspace. It returns due dates with real submission status, grades, assignments, rubrics, course content, announcements, discussions and class lists. It works at any school that uses D2L Brightspace, including schools with Microsoft, Duo, Okta or Shibboleth sign-in. It is read only and never stores a password.
 
 ## Install
 
@@ -8,20 +8,11 @@ Requirements are Node.js 20 or newer and Google Chrome or Microsoft Edge.
 
 Run this command in a terminal. It opens a browser window so the user can sign in, so do not run it silently in the background.
 
-npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup
+npx -y brightspace-d2l-mcp setup
 
 Setup asks for the school, opens a normal browser window where the user signs in the way they always do, and connects every supported AI app it finds. Afterwards restart the AI app.
 
-Useful options
-
-- npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup --school yourschool.brightspace.com skips the school question
-- npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup --apps claude-desktop,cursor only connects those apps
-- npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup --skip-login signs in later on first use
-- npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz setup --yes accepts every default
-
-App ids are claude-desktop, claude-code, cursor, vscode, windsurf, codex, gemini-cli, cline, roo-code, opencode, zed, lm-studio and kiro.
-
-For any other app run npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz config to print the MCP config JSON, or launch the server over stdio with npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz. For ChatGPT and hosted agents run npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz serve --http.
+For any other app run npx -y brightspace-d2l-mcp config to print the MCP config JSON, or launch the server over stdio with npx -y brightspace-d2l-mcp. For ChatGPT and hosted agents run npx -y brightspace-d2l-mcp serve --http.
 
 ## Tools
 
@@ -51,26 +42,28 @@ Submission status values are submitted, graded, not_submitted, draft, not_open_y
 
 ## Other commands
 
-- npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz login signs in again
-- npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz status shows the school, sign-in state and connected apps
-- npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz doctor checks Node, the school, sign-in and connected apps and says how to fix problems. Run this first when something is not working
-- npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz logout deletes the saved session
-- npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz uninstall removes it from all AI apps and deletes all local data
+- npx -y brightspace-d2l-mcp login signs in again
+- npx -y brightspace-d2l-mcp status shows the school, sign-in state and connected apps
+- npx -y brightspace-d2l-mcp doctor checks Node, the school, sign-in and connected apps and says how to fix problems. Run this first when something is not working
+- npx -y brightspace-d2l-mcp logout deletes the saved session
+- npx -y brightspace-d2l-mcp uninstall removes it from all AI apps and deletes all local data
 
 ## Privacy
 
-The password is never seen or stored because the user types it into the school's own sign-in page in a real browser. The server is read only and cannot submit, post or change anything. Everything runs locally and talks only to the school's Brightspace with no server in between and no analytics. The session is saved in the .brightspace-mcp-pro folder in the user home directory.
+The password is never seen or stored because the user types it into the school's own sign-in page in a real browser. The server is read only and cannot submit, post or change anything. Everything runs locally and talks only to the school's Brightspace with no server in between and no analytics. The session is saved in the .brightspace-d2l-mcp folder in the user home directory.
 
 ## Troubleshooting
 
 - If no supported browser is found, install Google Chrome or use Microsoft Edge, or run npx playwright install chromium
 - If the school address is not accepted, copy the address from the browser address bar while signed in to Brightspace
-- If it keeps asking to sign in, run npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz status and then npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz login
-- To hide old courses add course ids to excludeCourses in config.json in the .brightspace-mcp-pro folder
+- If it keeps asking to sign in, run npx -y brightspace-d2l-mcp status and then npx -y brightspace-d2l-mcp login
+- To hide old courses add course ids to excludeCourses in config.json in the .brightspace-d2l-mcp folder
 
 ## Links
 
-- Pricing and free trial https://brightspacemcp.com/pro/
+- Source code https://github.com/AnonymousOnyx22/brightspace-d2l-mcp
+- npm package https://www.npmjs.com/package/brightspace-d2l-mcp
+- More free student MCP servers https://brightspacemcp.com/more-mcps/
 - Mac and Linux installer https://brightspacemcp.com/install.sh
 
 ## Guides
@@ -79,7 +72,7 @@ The password is never seen or stored because the user types it into the school's
 - [Connect Brightspace to Claude](https://brightspacemcp.com/claude/)
 - [Use Brightspace with ChatGPT](https://brightspacemcp.com/chatgpt/)
 - [Brightspace MCP servers compared](https://brightspacemcp.com/compare/)
-- [Pricing: 7-day free trial, then $4 CAD a month](https://brightspacemcp.com/pro/)
+- [More free student MCP servers](https://brightspacemcp.com/more-mcps/)
 - [Privacy policy](https://brightspacemcp.com/privacy/)
 - [Terms of use](https://brightspacemcp.com/terms/)
 - Finish setup on a laptop https://brightspacemcp.com/start/

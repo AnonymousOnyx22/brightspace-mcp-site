@@ -56,15 +56,20 @@
     Content-Type = "text/plain; charset=utf-8"
     Cache-Control = "public, max-age=300"
 
-[[headers]]
-  for = "/pro/*.tgz"
-  [headers.values]
-    Content-Type = "application/gzip"
-    Cache-Control = "public, max-age=0, must-revalidate"
+# The old paid plan is gone. Everything is free now.
+[[redirects]]
+  from = "/pro"
+  to = "/"
+  status = 301
+  force = true
 
-[[headers]]
-  for = "/pro/*.mcpb"
-  [headers.values]
-    Content-Type = "application/octet-stream"
-    Content-Disposition = "attachment"
-    Cache-Control = "public, max-age=0, must-revalidate"
+[[redirects]]
+  from = "/pro/*"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/api/*"
+  to = "/"
+  status = 301

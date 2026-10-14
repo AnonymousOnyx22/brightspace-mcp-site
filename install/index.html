@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Install guide | Brightspace MCP</title>
-<meta name="description" content="Step-by-step guide to installing Brightspace MCP in the Claude app on Windows and Mac.">
+<meta name="description" content="Step-by-step guide to installing the free Brightspace MCP server in Claude on Windows, Mac and Linux.">
 <link rel="canonical" href="https://brightspacemcp.com/install/">
 <meta name="theme-color" content="#0b1020">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Install guide | Brightspace MCP">
-<meta property="og:description" content="Step-by-step guide to installing Brightspace MCP in the Claude app on Windows and Mac.">
+<meta property="og:description" content="Step-by-step guide to installing the free Brightspace MCP server in Claude on Windows, Mac and Linux.">
 <meta property="og:url" content="https://brightspacemcp.com/install/">
 <meta property="og:image" content="https://brightspacemcp.com/og.png">
 <meta property="og:site_name" content="Brightspace D2L MCP Server">
@@ -22,39 +22,35 @@
 <div class="wrap page">
   <header class="top">
     <a class="brand" href="/"><span class="brand-mark"><svg width="18" height="18" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 33l11 11 25-27" stroke="#ff6a3d" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Brightspace MCP</a>
-    <nav><a href="/claude/">Claude</a><a href="/chatgpt/">ChatGPT</a><a href="/compare/">Compare</a><a href="/pro/">Pricing</a><a class="gh" href="/pro/">Start free trial</a></nav>
+    <nav><a href="/claude/">Claude</a><a href="/chatgpt/">ChatGPT</a><a href="/compare/">Compare</a><a href="/more-mcps/">More MCPs</a><a class="gh" href="/#setup">Get started</a></nav>
   </header>
   <p class="crumbs"><a href="/">Home</a> / Install guide</p>
   <main>
     <div class="hero">
       <p class="eyebrow">Install guide</p>
       <h1>Install Brightspace MCP in Claude</h1>
-      <p class="lede">About 2 minutes on a Windows or Mac laptop. You need the <a href="https://claude.ai/download" rel="noopener">Claude desktop app</a> and the file from the <b>Add to Claude</b> button on your key page.</p>
+      <p class="lede">About 2 minutes on Windows, Mac or Linux. It is free. You need <a href="https://nodejs.org/en/download" rel="noopener">Node.js 20 or newer</a> and the <a href="https://claude.ai/download" rel="noopener">Claude desktop app</a>.</p>
     </div>
     <section>
       <ol class="steps">
-        <li><strong>Download your file.</strong> On your key page, click <b>Add to Claude</b>. A file called <code>Brightspace MCP Pro.mcpb</code> lands in your <b>Downloads</b> folder. Your key and school are already inside it.<div class="shot" data-shot="download"></div></li>
-        <li><strong>Open Claude's Settings.</strong> In the Claude app, press <kbd>Ctrl</kbd> <kbd>,</kbd> on Windows or <kbd>⌘</kbd> <kbd>,</kbd> on Mac. You can also click your name at the bottom left and choose <b>Settings</b>.</li>
-        <li><strong>Go to Extensions.</strong> In the left menu, scroll to <b>This computer</b> and click <b>Extensions</b>.<div class="shot" data-shot="settings"><img src="/install/img/settings.webp" alt="Claude Settings with Extensions highlighted in the left menu under This computer" width="1400" height="812" loading="lazy"></div></li>
-        <li><strong>Install the file.</strong> Easiest: <b>drag <code>Brightspace MCP Pro.mcpb</code> from your Downloads folder onto this Extensions page</b>. Or click <b>Advanced settings</b>, then the <b>Install extension</b> button at the bottom, and pick the file.<div class="shot"><img src="/install/img/extensions.webp" alt="Claude Extensions page with Advanced settings and the Drag .MCPB files here to install hint highlighted" width="1400" height="793" loading="lazy"><img src="/install/img/install-button.webp" alt="Claude extension settings with the Install extension button highlighted" width="1400" height="737" loading="lazy"></div></li>
-        <li><strong>Click Install.</strong> Claude shows the Brightspace MCP Pro install screen. Click <b>Install</b>. The red warning appears for every extension that isn't from the Claude Directory; it's normal.<div class="shot" data-shot="install"><img src="/install/img/install-dialog.webp" alt="Claude install screen for Brightspace MCP Pro with the Install button highlighted" width="1338" height="1018" loading="lazy"></div><p>Windows asks once more. Click <b>Install</b> again.</p><div class="shot" data-shot="confirm"><img src="/install/img/confirm.webp" alt="Windows Install Extension prompt with Install highlighted" width="1340" height="1040" loading="lazy"></div><p>A <b>Configure</b> box opens with your key and school already filled in. Just click <b>Save</b>.</p><div class="shot" data-shot="configure"><img src="/install/img/configure.webp" alt="Configure box with the key and school address filled in and Save highlighted" width="840" height="590" loading="lazy"></div></li>
-        <li><strong>Ask Claude.</strong> Start a <b>new chat</b> and type <i>"What should I work on right now?"</i> The first time, a browser window opens: sign in to Brightspace the way you always do. That's it.<div class="shot" data-shot="first-chat"></div></li>
+        <li><strong>Open a terminal.</strong> On Windows open <b>PowerShell</b>. On Mac open <b>Terminal</b>.</li>
+        <li><strong>Run setup.</strong><div class="cmd"><span class="p">$</span><span>npx brightspace-d2l-mcp setup</span><button class="copy" type="button" data-copy="npx brightspace-d2l-mcp setup"><span>Copy</span></button></div></li>
+        <li><strong>Type your school.</strong> Paste any Brightspace link from your browser so it knows your school.</li>
+        <li><strong>Sign in.</strong> A normal browser window opens. Sign in the way you always do. Your password is never stored.</li>
+        <li><strong>Restart Claude.</strong> Setup adds Brightspace to Claude Desktop and Claude Code. Start a new chat and ask <i>"What should I work on right now?"</i></li>
       </ol>
     </section>
     <section>
       <h2>Something look different?</h2>
-      <details><summary>Windows asks "Select an app to open this .mcpb file"</summary><p>Close that box. Windows just doesn't know the file type yet. Install it from inside Claude instead, using steps 2 to 4 above.</p></details>
-      <details><summary>I can't find Extensions in Settings</summary><p>Update Claude first: in the app, open the menu and choose <b>Check for updates</b>, or reinstall from <a href="https://claude.ai/download" rel="noopener">claude.ai/download</a>. In some versions it's under <b>Connectors</b>, then <b>Desktop extensions</b>.</p></details>
-      <details><summary>Claude says the extension isn't verified</summary><p>That's expected for extensions installed from a file. Click to continue and install.</p></details>
-      <details><summary>The key or school box is empty</summary><p>Paste your key from your key page, and your school's Brightspace address from your browser's address bar when you're on Brightspace (for example <code>yourschool.brightspace.com</code>).</p></details>
-      <details><summary>Claude says it can't find my school</summary><p>In Claude, open <b>Settings</b>, <b>Extensions</b>, <b>Brightspace MCP Pro</b>, fix the Brightspace address, then quit and reopen Claude.</p></details>
-      <details><summary>The sign-in window didn't open</summary><p>Ask Claude again. If Chrome or Edge isn't installed, the first time takes a minute longer while it downloads a small browser for signing in.</p></details>
-      <details><summary>Still stuck?</summary><p>Use the <a href="/contact/">contact form</a> and include what you see on screen.</p></details>
+      <details><summary>Node.js isn't installed</summary><p>Install it from <a href="https://nodejs.org/en/download" rel="noopener">nodejs.org</a>, close the terminal, open a new one and run the command again.</p></details>
+      <details><summary>The sign-in window didn't open</summary><p>Run <code>npx brightspace-d2l-mcp doctor</code>. It checks everything and says how to fix it. If Chrome or Edge isn't installed, the first time takes a minute longer while it gets a small browser for signing in.</p></details>
+      <details><summary>Claude doesn't show Brightspace</summary><p>Quit Claude fully and reopen it. If it still isn't there, run <code>npx brightspace-d2l-mcp status</code>.</p></details>
+      <details><summary>Still stuck?</summary><p>Open an issue on <a href="https://github.com/AnonymousOnyx22/brightspace-d2l-mcp/issues">GitHub</a> or use the <a href="/contact/">contact form</a>.</p></details>
     </section>
   </main>
   <footer>
     <p><a href="/brightspace-mcp/">What is Brightspace MCP?</a> · Brightspace D2L MCP Server, built by AnonymousOnyx22, a student developer. Not affiliated with D2L.
-    · <a href="/">Home</a> · <a href="/pro/">Pricing</a> · <a href="/compare/">Compare</a>
+    · <a href="/">Home</a> · <a href="/more-mcps/">More student MCPs</a> · <a href="/compare/">Compare</a>
     · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></p>
   </footer>
 </div>

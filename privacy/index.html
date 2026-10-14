@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy policy | Brightspace D2L MCP Server</title>
-<meta name="description" content="How Brightspace D2L MCP Server handles your data. Everything runs on your computer. Only your subscription key is checked with us.">
+<meta name="description" content="How Brightspace D2L MCP Server handles your data. Everything runs on your computer.">
 <link rel="canonical" href="https://brightspacemcp.com/privacy/">
 <meta name="theme-color" content="#0b1020">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Privacy policy | Brightspace D2L MCP Server">
-<meta property="og:description" content="How Brightspace D2L MCP Server handles your data. Everything runs on your computer. Only your subscription key is checked with us.">
+<meta property="og:description" content="How Brightspace D2L MCP Server handles your data. Everything runs on your computer.">
 <meta property="og:url" content="https://brightspacemcp.com/privacy/">
 <meta property="og:image" content="https://brightspacemcp.com/og.png">
 <meta property="og:site_name" content="Brightspace D2L MCP Server">
@@ -22,7 +22,7 @@
 <div class="wrap page">
   <header class="top">
     <a class="brand" href="/"><span class="brand-mark"><svg width="18" height="18" viewBox="0 0 64 64" aria-hidden="true"><path d="M14 33l11 11 25-27" stroke="#ff6a3d" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Brightspace MCP</a>
-    <nav><a href="/claude/">Claude</a><a href="/chatgpt/">ChatGPT</a><a href="/compare/">Compare</a><a href="/pro/">Pricing</a><a class="gh" href="/pro/">Start free trial</a></nav>
+    <nav><a href="/claude/">Claude</a><a href="/chatgpt/">ChatGPT</a><a href="/compare/">Compare</a><a href="/more-mcps/">More MCPs</a><a class="gh" href="/#setup">Get started</a></nav>
   </header>
   <p class="crumbs"><a href="/">Home</a> / Privacy</p>
   <main>
@@ -37,29 +37,23 @@
 
       <h2>The app</h2>
       <p>Brightspace MCP runs entirely on your own computer. It signs in to Brightspace through a normal browser window, and your session stays on your computer. Your courses, grades and files go from Brightspace straight to your computer and to the AI app you choose. None of it is sent to us.</p>
-      <p>Apart from the license check below, the only outside request it makes on its own is a check of the public npm registry to see whether a newer version exists. That request doesn't include any personal or school information.</p>
+      <p>The only outside request it makes on its own is a check of the public npm registry to see whether a newer version exists. That request doesn't include any personal or school information.</p>
       <p>The AI app you connect (for example Claude, ChatGPT or Cursor) receives the answers it asks for. That company's own privacy policy covers what it does with them.</p>
 
       <h2>This website</h2>
-      <p>The site is hosted by Netlify, which keeps standard server logs such as IP address, browser type and the pages requested. We don't use advertising trackers or sell any data. If you join the Pro waitlist, we collect your email address and school name, and use them only to tell you when Pro is available. Ask us to delete them anytime.</p>
+      <p>The site is hosted by Netlify, which keeps standard server logs such as IP address, browser type and the pages requested. We don't use advertising trackers or sell any data. If you send a message through the contact form, we keep your email and message only to reply. Ask us to delete them anytime.</p>
 
-      <h2>Subscriptions and alerts</h2>
-      <p>Alerts and the calendar feed also run on your own computer, using the same saved session. Your grades, courses and sign-in never reach us.</p>
-      <ul>
-        <li><b>Payments.</b> Stripe processes payments and holds your billing details, such as your email address and card. We never see or store your full card number. Stripe's privacy policy covers what they handle.</li>
-        <li><b>License checks.</b> About twice a day, the app sends your subscription key to brightspacemcp.com so we can ask Stripe whether your subscription is active. The key is the only thing sent. We don't store it.</li>
-        <li><b>Notifications and calendar.</b> Alerts are shown by your computer, and the calendar feed is served only to your own computer.</li>
-      </ul>
+      <h2>Payments and accounts</h2>
+      <p>There are none. The project is free, so there are no payments, no accounts and no license keys.</p>
 
       <h2>Your choices</h2>
       <ul>
-        <li>Remove your key from your computer at any time with <code>npx -y https://brightspacemcp.com/pro/brightspace-mcp-pro.tgz deactivate</code>.</li>
-        <li>Cancel your subscription at any time from the billing page.</li>
-        <li>Ask us for a copy of your data, to correct it, or to delete your account and everything linked to it. We'll do it within 30 days.</li>
+        <li>Remove everything from your computer at any time with <code>npx brightspace-d2l-mcp uninstall</code>.</li>
+        <li>Ask us for a copy of your data, to correct it, or to delete anything we hold about you. We'll do it within 30 days.</li>
       </ul>
 
       <h2>Sharing</h2>
-      <p>We don't sell or rent personal information. We share it only with the services needed to run the project (Netlify for hosting and Stripe for payments), or when required by law.</p>
+      <p>We don't sell or rent personal information. We share it only with the services needed to run the project (Netlify for hosting), or when required by law.</p>
 
       <h2>Security</h2>
       <p>All traffic uses HTTPS, your Brightspace session stays on your own computer, and the app can only read from Brightspace, never write. No system is perfectly secure, but if a breach ever affects your information we'll tell you and the authorities as the law requires.</p>
@@ -68,7 +62,7 @@
       <p>The project is meant for college and university students. It isn't directed at children under 13.</p>
 
       <h2>Changes</h2>
-      <p>If this policy changes, the date at the top changes too. Significant changes will be announced to Pro users by email before they take effect.</p>
+      <p>If this policy changes, the date at the top changes too. </p>
 
       <h2>Contact</h2>
       <p>Privacy questions or requests: use the <a href="/contact/">contact form</a>.</p>
@@ -77,7 +71,7 @@
   </main>
   <footer>
     <p><a href="/brightspace-mcp/">What is Brightspace MCP?</a> · Brightspace D2L MCP Server, built by AnonymousOnyx22, a student developer. Not affiliated with D2L.
-    · <a href="/">Home</a> · <a href="/pro/">Pricing</a> · <a href="/compare/">Compare</a>
+    · <a href="/">Home</a> · <a href="/more-mcps/">More student MCPs</a> · <a href="/compare/">Compare</a>
     · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></p>
   </footer>
 </div>
