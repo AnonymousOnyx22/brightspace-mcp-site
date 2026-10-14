@@ -256,7 +256,7 @@ export async function activatePage(req) {
       <div class="setup enter" style="--i:3">
         <ol class="mini">
           <li>Open the <b>Claude app</b> on your computer. Don't have it? <a href="https://claude.ai/download" rel="noopener">Get it free</a>.</li>
-          <li>Click <b>Add to Claude</b> below, then <b>drag the downloaded file into the Claude window</b>. Claude shows an <b>Install</b> screen.</li>
+          <li>Click <b>Add to Claude</b> below, then <b>drag the downloaded file into the Claude window</b>. Claude shows an <b>Install</b> screen. Click <b>Install</b> (twice on Windows). The red "not verified" note shows for every extension installed from a file; it's normal.</li>
           <li>${school ? `Your key and school (<code>${esc(school)}</code>) are already filled in. Click <b>Install</b>.` : `Your key is already filled in. Add your school's Brightspace address (copy it from your browser, like <code>yourschool.brightspace.com</code>) and click <b>Install</b>.`}</li>
           <li>Ask Claude <i>"What should I work on right now?"</i> A window opens once so you can sign in to Brightspace.</li>
         </ol>
